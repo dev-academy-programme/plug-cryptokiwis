@@ -2,9 +2,9 @@ import React from 'react'
 
 import '../sass/styles.scss'
 
-const App = ({ children }) => (
+const App = () => (
   <div className="container">
-    <h1 className="has-text-success">Hello World</h1>
+    <h1 className="title is-1">Hello World</h1>
   </div>
 )
 
