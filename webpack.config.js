@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './index.js',
+  entry: './client/index.js',
   output: 'bundle.js',
   module: {
     rules: [{
