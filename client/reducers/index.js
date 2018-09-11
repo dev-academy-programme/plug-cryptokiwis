@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux'
 
-import myKitties from './myKitties'
+import myKiwis from './myKiwis'
+import availableKiwis from './availableKiwis'
 
 export default combineReducers({
-  myKitties
+  myKiwis,
+  availableKiwis
 })
