@@ -15,6 +15,10 @@ class Login extends React.Component {
   }
   onSubmit(e) {
     e.preventDefault()
+    this.props.dispatch({
+      type: 'SAVE_KEY',
+      key: this.state.key
+    })
   }
   render() {
     return <div className="section has-text-centered">

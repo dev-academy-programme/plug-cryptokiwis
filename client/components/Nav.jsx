@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-const Nav = ({key, availableKiwis, myKiwis}) => {
+const Nav = ({myKey, availableKiwis, myKiwis}) => {
   const kiwi = <img className="nav-image" src="https://png.icons8.com/ios/1600/kiwi-bird-filled.png" />
   return <div className="navbar is-primary" role="navigation" aria-label="main navigation">
     <div className="navbar-start">
@@ -22,17 +22,17 @@ const Nav = ({key, availableKiwis, myKiwis}) => {
     </div>
     <div className="navbar-end">
       <div className="navbar-menu section">
-        {!key && <div className="navbar-item">
+        {!myKey && <div className="navbar-item">
           <Link to="/login" className="button is-large is-info">
             Login
           </Link>
         </div>}
-        {!key && <div className="navbar-item">
+        {!myKey && <div className="navbar-item">
           <Link to="/register" className="button is-large is-success">
             Register
           </Link>
         </div>}
-        {!!key && <div className="navbar-item">
+        {!!myKey && <div className="navbar-item">
           <Link to="/" className="button is-large is-info">
             My Kiwis
           </Link>

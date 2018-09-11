@@ -16,7 +16,12 @@ class Register extends React.Component {
     })
   }
   register() {
-    this.showKey('Iamafakekeyandhereissomemoretexttomakethiskeyseemlonger')
+    const key = 'Iamafakekeyandhereissomemoretexttomakethiskeyseemlonger'
+    this.showKey(key)
+    this.props.dispatch({
+      type: 'SAVE_KEY',
+      key
+    })
   }
   copyToClipboard() {
     const copyText = document.getElementById("gennedKey");
@@ -35,7 +40,7 @@ class Register extends React.Component {
             ? <span>
               <label className="label is-large">
                 Be sure to save this key somewhere!
-                <input type="text" id="gennedKey" className="input is-success is-large has-text-info" value={key} />
+                <input type="text" id="gennedKey" className="input is-success is-large has-text-info" readOnly={true} value={key} />
               </label>
               <button className="button is-large is-fullwidth is-info" onClick={this.copyToClipboard.bind(this)}>Copy to Clipboard</button>
             </span>
