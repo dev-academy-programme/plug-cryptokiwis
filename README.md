@@ -5,6 +5,32 @@ This is a challenge for the plug blockchain curriculum.
 This challenge is inspired by https://www.cryptokitties.co/
 Watch [this video](https://www.youtube.com/watch?v=jGfvkjzLrNw) to find out more about what is going on with CryptoKitties, and what it means.
 
+## Setup
+
+### React
+
+Run the command
+
+``` sh
+yarn install
+ - or -
+npm install
+```
+
+to install modules.
+
+Run
+
+``` sh
+yarn start
+ - or -
+npm start
+```
+
+To start the react frontend dev-server
+
+Go to http://localhost:8080/ to see the site.
+
 ## User Stories
 
 * As a User I can create a new public/private key pairing using a command-line interface
