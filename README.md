@@ -1,26 +1,26 @@
-# A starter project with Sass
+# Crypto Kiwis
 
-This is a very basic base for any project that you want to develop quickly with Sass.
+This is a challenge for the plug blockchain curriculum.
 
+This challenge is inspired by https://www.cryptokitties.co/
+Watch [this video](https://www.youtube.com/watch?v=jGfvkjzLrNw) to find out more about what is going on with CryptoKitties, and what it means.
 
-To start a new project:
-  * `git clone https://github.com/ushamacdonald/dev-sass.git <NEW REPO NAME HERE>`
-  * `git remote remove origin`
-  * `git remote add origin <NEW REPO URL HERE>`
-  * `git remote -v` to see your remotes
-  * `git push origin master` to push the boilerplate code to your new repo
+## User Stories
 
-Run the following in your terminal:
-
-```sh
-npm install
-
-```
-
-  `npm run dev` for bundling, watch and nodemon
-
-  `npm start` only runs server (setup for heroku)
+* As a User I can create a new public/private key pairing using a command-line interface
+* As an early adopter, I can claim one of the first 20 "Gen 1" Kiwis.
+* As a User who owns a Kiwi, I can make a breeding request to another Kiwi.
+* As a User with a Kiwi, I can see all breeding requests made to that Kiwi.
+* As a User with a kiwi I can accept a breeding request, which will spawn a next Gen Kiwi for both Owners, with pseudo random "DNA" which is affected by the traits of both parents.
 
 
-## Woohoo!
-You're ready to get going!
+## Traits (WIP)
+
+### DNA traits
+| Trait | Is Visual | Value | Purpose |
+| --- | --- | --- | --- |
+| Size | Yes | 1 - 5 | Larger Kiwis will appear larger |
+| Colour | Yes | Hex Color | Colour of the kiwi when displayed |
+| Speed | No | 1 - 10 | Trait to make Kiwis desireable |
+| Strength | No | 1 - 10 | Trait to make Kiwis desireable |
+| Cuteness | No | 1 - 10 | Trait to make Kiwis desireable |
