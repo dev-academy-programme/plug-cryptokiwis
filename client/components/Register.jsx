@@ -16,7 +16,13 @@ class Register extends React.Component {
     })
   }
   register() {
-    this.showKey('Iamafakekey')
+    this.showKey('Iamafakekeyandhereissomemoretexttomakethiskeyseemlonger')
+  }
+  copyToClipboard() {
+    const copyText = document.getElementById("gennedKey");
+    copyText.select();
+    document.execCommand("copy");
+    alert("Copied the text: " + copyText.value);
   }
   render() {
     const {showKey, key} = this.state
@@ -26,10 +32,13 @@ class Register extends React.Component {
       <div className="columns is-centered">
         <div className="column is-6">
           {showKey
-            ? <label className="label is-large">
-              Be sure to save this key somewhere!
-              <input type="text" className="input is-success is-large has-text-info" value={key} />
-            </label>
+            ? <span>
+              <label className="label is-large">
+                Be sure to save this key somewhere!
+                <input type="text" id="gennedKey" className="input is-success is-large has-text-info" value={key} />
+              </label>
+              <button className="button is-large is-fullwidth is-info" onClick={this.copyToClipboard.bind(this)}>Copy to Clipboard</button>
+            </span>
             : <button className="button is-large is-fullwidth is-success" onClick={this.register.bind(this)}>
               Generate Key
             </button>
