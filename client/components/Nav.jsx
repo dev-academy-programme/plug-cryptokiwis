@@ -22,16 +22,6 @@ const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
     </div>
     <div className="navbar-end">
       <div className="navbar-menu section">
-        {!myKey && <div className="navbar-item">
-          <Link to="/login" className="button is-large is-info">
-            Login
-          </Link>
-        </div>}
-        {!!myKey && <div className="navbar-item">
-          <Link to="/" onClick={() => logout()} className="button is-large is-warning">
-            Logout
-          </Link>
-        </div>}
         {!!myKey && <div className="navbar-item">
           <Link to="/mykiwis" className="button is-large is-info">
             My Kiwis
@@ -42,6 +32,16 @@ const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
             Browse
           </Link>
         </div>
+        {!myKey && <div className="navbar-item">
+          <Link to="/login" className="button is-large is-info">
+            Login
+          </Link>
+        </div>}
+        {!!myKey && <div className="navbar-item">
+          <Link to="/" onClick={() => logout()} className="button is-large is-warning">
+            Logout
+          </Link>
+        </div>}
       </div>
     </div>
   </div>
