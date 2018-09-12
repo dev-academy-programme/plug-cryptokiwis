@@ -6,6 +6,9 @@ import Nav from './Nav'
 import Home from './Home'
 import Login from './Login'
 import Register from './Register'
+import MyKiwis from './MyKiwis'
+import AvailableKiwis from './AvailableKiwis'
+import Browse from './Browse'
 
 import '../sass/styles.scss'
 
@@ -17,6 +20,9 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/mykiwis" component={MyKiwis} />
+        <Route exact path="/grab" component={AvailableKiwis} />
+        <Route exact path="/browse" component={Browse} />
       </React.Fragment>
     </Router>
   </div>
