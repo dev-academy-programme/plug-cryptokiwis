@@ -8,18 +8,21 @@ import Home from './Home'
 import Login from './Login'
 import MyKiwis from './MyKiwis'
 import Browse from './Browse'
+import BreedingRequests from './BreedingRequests'
 
 import '../sass/styles.scss'
 
-const App = ({key}) => (
+const App = ({myKey}) => (
   <div className="container">
+    {console.log({myKey})}
     <Router>
       <React.Fragment>
         <Route path="/" component={Nav} />
         <Route exact path="/" component={Home} />
-        {!key && <Route exact path="/login" component={Login} />}
-        {!!key && <Route exact path="/mykiwis" component={MyKiwis} />}
+        {!myKey && <Route exact path="/login" component={Login} />}
+        {!!myKey && <Route exact path="/mykiwis" component={MyKiwis} />}
         <Route exact path="/browse" component={Browse} />
+        {!!myKey && <Route path="/requests" component={BreedingRequests} />}
       </React.Fragment>
     </Router>
   </div>
