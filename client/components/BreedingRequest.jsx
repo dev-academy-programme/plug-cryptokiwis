@@ -18,7 +18,7 @@ class BreedingRequest extends React.Component {
     return <div className="column is-6 has-text-centered">
       <h3 className="title is-3">{kiwi.name}</h3>
       <h3 className="subtitle is-3">Owner: {isYours ? 'You' : 'Them'}</h3>
-      <h4 className="subtitle is-4">ID: {kiwi.id}</h4>
+      <h4 className="subtitle is-4">ID: {kiwi.idgi}</h4>
       <div style={{height: '200px'}}>
         <KiwiImage size={kiwi.size} colour={kiwi.colour} />
       </div>

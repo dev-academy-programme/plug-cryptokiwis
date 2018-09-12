@@ -7,7 +7,8 @@ export default function ({kiwi, isFlipped}) {
     size,
     strength,
     cuteness,
-    speed
+    speed,
+    pursuers
   } = kiwi
   const cellClass = 'td has-text-dark has-text-centered'
 
@@ -33,6 +34,7 @@ export default function ({kiwi, isFlipped}) {
       {renderRow('Strength', strength)}
       {renderRow('Speed', speed)}
       {renderRow('Cuteness', cuteness)}
+      {renderRow('Pursued By:', `${pursuers} kiwis`)}
     </tbody>
   </table>
 }
