@@ -1,5 +1,6 @@
 const initialState = [
   {
+    id: 1,
     sender: 'xyz',
     receiver: 'abc',
     sender_kiwi_id: 7,
