@@ -28,18 +28,13 @@ const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
           </Link>
         </div>}
         {!!myKey && <div className="navbar-item">
-          <Link to="/" onClick={() => logout()} className="button is-large is-info">
+          <Link to="/" onClick={() => logout()} className="button is-large is-warning">
             Logout
           </Link>
         </div>}
         {!!myKey && <div className="navbar-item">
           <Link to="/mykiwis" className="button is-large is-info">
             My Kiwis
-          </Link>
-        </div>}
-        {availableKiwis.length > 0 && <div className="navbar-item">
-          <Link to="/grab" className="button is-large is-warning">
-            Grab a Kiwi
           </Link>
         </div>}
         <div className="navbar-item">
@@ -60,4 +55,4 @@ const mapDispatchToProps = dispatch => ({
   })
 })
 
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

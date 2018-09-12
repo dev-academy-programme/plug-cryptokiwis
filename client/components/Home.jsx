@@ -12,9 +12,6 @@ const Home = ({myKey, availableKiwis, myKiwis}) => {
         {!myKey && <Link to="/login" className="button   is-fullwidth is-large is-info">
           Login
         </Link>}
-        {!myKey && <Link to="/register" className="button is-fullwidth is-large is-success">
-          Register
-        </Link>}
         {!!myKey && <Link to="/mykiwis" className="button is-large is-fullwidth is-info">
           My Kiwis
         </Link>}
