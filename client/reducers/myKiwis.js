@@ -1,5 +1,10 @@
+import createKiwi from '../createKiwi'
 
-export default function myKiwisReducer (state = [], action) {
+const initialState = [
+  createKiwi()
+]
+
+export default function myKiwisReducer (state = initialState, action) {
   let newState = [...state]
   switch(action.type) {
     default: return state

@@ -33,11 +33,11 @@ const Nav = ({myKey, availableKiwis, myKiwis}) => {
           </Link>
         </div>}
         {!!myKey && <div className="navbar-item">
-          <Link to="/" className="button is-large is-info">
+          <Link to="/mykiwis" className="button is-large is-info">
             My Kiwis
           </Link>
         </div>}
-        {availableKiwis.length > 0 && myKiwis.length == 0 && <div className="navbar-item">
+        {availableKiwis.length > 0 && <div className="navbar-item">
           <Link to="/grab" className="button is-large is-warning">
             Grab a Kiwi
           </Link>
