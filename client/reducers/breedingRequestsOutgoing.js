@@ -2,8 +2,8 @@ const initialState = [
   {
     sender: 'abc',
     receiver: 'xyz',
-    sender_kiwi_id: 7,
-    receiver_kiwi_id: 3
+    sender_kiwi_id: 1,
+    receiver_kiwi_id: 5
   }
 ]
 
