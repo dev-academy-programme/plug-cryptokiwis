@@ -5,6 +5,21 @@ const initialState = [
   createKiwi(),
   createKiwi(),
   createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
+  createKiwi(),
   createKiwi()
 ]
 

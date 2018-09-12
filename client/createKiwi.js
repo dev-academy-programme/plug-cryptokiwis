@@ -1,7 +1,8 @@
 import names from './names'
 
 function getName() {
-  return names[Math.floor(Math.random() * names.length)]
+  const keys = Object.keys(names)
+  return keys[Math.floor(Math.random() * keys.length)]
 }
 
 function getRandom(max) {
