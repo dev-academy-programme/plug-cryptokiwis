@@ -3,6 +3,7 @@ import Link from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import KiwiImage from './KiwiImage'
+import KiwiStatTable from './KiwiStatTable'
 
 import {Router, Route} from 'react-router-dom'
 
@@ -12,15 +13,9 @@ const KiwiPreview = ({kiwi, deselect, myKiwis}) => {
   const {
     name,
     size,
-    colour,
-    strength,
-    cuteness,
-    speed
+    colour
   } = kiwi
   const translation = `${names[name.split(' ')[0]]} - ${names[name.split(' ')[1]]}`
-  const cellClass = 'td has-text-dark has-text-centered'
-
-
   return <div className="column is-12 box has-text-centered">
     <div className="level">
       <div className="">
@@ -34,37 +29,7 @@ const KiwiPreview = ({kiwi, deselect, myKiwis}) => {
         <KiwiImage colour={colour} size={size * 2} />
       </div>
       <div className="column is-6">
-        <table className="table is-large is-fullwidth has-text-centered">
-          <thead>
-            <tr>
-              <th className={cellClass}>Trait</th>
-              <th className={cellClass}>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className={cellClass}><b>Colour</b></td>
-              <td className={cellClass}>{colour}</td>
-            </tr>
-            <tr>
-              <td className={cellClass}><b>Size</b></td>
-              <td className={cellClass}>{size}</td>
-            </tr>
-            <tr>
-              <td className={cellClass}><b>Speed</b></td>
-              <td className={cellClass}>{speed}</td>
-            </tr>
-            <tr>
-              <td className={cellClass}><b>Strength</b></td>
-              <td className={cellClass}>{strength}</td>
-            </tr>
-            <tr>
-              <td className={cellClass}><b>Cuteness</b></td>
-              <td className={cellClass}>{cuteness}</td>
-            </tr>
-          </tbody>
-        </table>
-
+        <KiwiStatTable kiwi={kiwi} />
       </div>
     </div>
     <Route path="/grab" render={(props) => <div className="has-text-centered">

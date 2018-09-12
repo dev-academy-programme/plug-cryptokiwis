@@ -1,6 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import KiwiImage from './KiwiImage'
+import KiwiStatTable from './KiwiStatTable'
+
 class BreedingRequest extends React.Component {
   constructor(props) {
     super(props)
@@ -11,17 +14,39 @@ class BreedingRequest extends React.Component {
   toggleStats() {
     this.setState(({showStats}) => ({showStats: !showStats}))
   }
+  renderKiwi(kiwi, isYours) {
+    return <div className="column is-6 has-text-centered">
+      <h3 className="title is-3">{kiwi.name}</h3>
+      <h3 className="subtitle is-3">Owner: {isYours ? 'You' : 'Them'}</h3>
+      <div style={{height: '200px'}}>
+        <KiwiImage size={kiwi.size} colour={kiwi.colour} />
+      </div>
+      {this.state.showStats && <KiwiStatTable kiwi={kiwi} isFlipped={!isYours} />}
+    </div>
+  }
   render() {
     const {showStats} = this.state
     const {isIncoming, request, kiwis, myKiwis} = this.props
-    console.log({request, kiwis, myKiwis});
     const {sender, receiver, sender_kiwi_id, receiver_kiwi_id} = request
+
     const senderKiwi = (isIncoming ? kiwis : myKiwis)
       .find(kiwi => kiwi.id == sender_kiwi_id)
     const receiverKiwi = (isIncoming ? myKiwis : kiwis)
       .find(kiwi => kiwi.id == receiver_kiwi_id)
-    console.log({senderKiwi, receiverKiwi});
-    return <div>{senderKiwi.name} -> {receiverKiwi.name}</div>
+
+    return <div className="box has-text-centered">
+      <h3 className="title is-3">{isIncoming ? '<--' : '-->'}</h3>
+      <div className="columns is-mobile">
+        {this.renderKiwi(isIncoming ? receiverKiwi : senderKiwi, true)}
+        {this.renderKiwi(!isIncoming ? receiverKiwi : senderKiwi, false)}
+      </div>
+      {showStats && isIncoming && <span classNames="column is-6 is-offset-3">
+        <button className="button is-large is-success">Accept</button>
+        <button className="button is-large is-danger">Decline</button>
+      </span>}
+      <br />
+      <button onClick={this.toggleStats.bind(this)} className="column is-6 is-offset-3 is-fullwidth button is-large is-success">{showStats ? "Show Less" : "Show More Info"}</button>
+    </div>
   }
 }
 
