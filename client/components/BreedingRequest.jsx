@@ -20,7 +20,7 @@ class BreedingRequest extends React.Component {
       <h3 className="subtitle is-3">Owner: {isYours ? 'You' : 'Them'}</h3>
       <h4 className="subtitle is-4">ID: {kiwi.idgi}</h4>
       <div style={{height: '200px'}}>
-        <KiwiImage size={kiwi.size} colour={kiwi.colour} />
+        <KiwiImage kiwi={kiwi} />
       </div>
       {this.state.showStats && <KiwiStatTable kiwi={kiwi} isFlipped={!isYours} />}
     </div>

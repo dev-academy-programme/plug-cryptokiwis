@@ -50,5 +50,3 @@ function createKiwi (one, two) {
 }
 
 const newKiwi = createKiwi(kiwiOne, kiwiTwo)
-console.log({kiwiOne, kiwiTwo});
-console.log({newKiwi});

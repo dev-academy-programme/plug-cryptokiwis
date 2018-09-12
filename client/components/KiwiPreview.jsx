@@ -10,7 +10,7 @@ const KiwiPreview = ({kiwi, selectedKiwis, select}) => {
   if (selectedKiwis.find(selected => selected == kiwi)) return <FullKiwiView kiwi={kiwi} />
   return <div className="column is-3 box" onClick={()=>select(kiwi)}>
     <h3 className="title is-3">{name}</h3>
-    <KiwiImage colour={colour} size={size} />
+    <KiwiImage kiwi={kiwi} />
   </div>
 }
 

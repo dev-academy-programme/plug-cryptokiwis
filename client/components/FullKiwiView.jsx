@@ -23,7 +23,7 @@ const KiwiPreview = ({kiwi, deselect, myKiwis}) => {
     <h4 className="subtitle is-2">ID: {id}</h4>
     <div className="columns is-centered">
       <div className="column is-6">
-        <KiwiImage colour={colour} size={size * 2} />
+        <KiwiImage kiwi={{...kiwi, size: kiwi.size * 2}} />
       </div>
       <div className="column is-6">
         <KiwiStatTable kiwi={kiwi} />

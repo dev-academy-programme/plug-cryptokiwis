@@ -14,7 +14,6 @@ import '../sass/styles.scss'
 
 const App = ({myKey}) => (
   <div className="container">
-    {console.log({myKey})}
     <Router>
       <React.Fragment>
         <Route path="/" component={Nav} />
