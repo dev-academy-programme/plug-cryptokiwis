@@ -2,8 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-const Home = ({myKey, availableKiwis, myKiwis}) => {
-  console.log({myKey, availableKiwis});
+const Home = ({myKey, myKiwis}) => {
   return <div className="section has-text-centered">
     <h2 className="title is-2">Welcome to Crypto Kiwis!</h2>
     <hr />
@@ -14,9 +13,6 @@ const Home = ({myKey, availableKiwis, myKiwis}) => {
         </Link>}
         {!!myKey && <Link to="/mykiwis" className="button is-large is-fullwidth is-info">
           My Kiwis
-        </Link>}
-        {availableKiwis.length > 0 && myKiwis.length == 0 && <Link to="/grab" className="button is-large is-fullwidth is-warning has-text-dark">
-          Grab a Kiwi
         </Link>}
         <Link to="/browse" className="button is-large is-fullwidth is-danger has-text-dark">
           Browse Kiwis
