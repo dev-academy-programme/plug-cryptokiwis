@@ -13,17 +13,14 @@ const KiwiPreview = ({kiwi, deselect, myKiwis}) => {
   const {
     name,
     size,
-    colour
+    colour,
+    id
   } = kiwi
   const translation = `${names[name.split(' ')[0]]} - ${names[name.split(' ')[1]]}`
-  return <div className="column is-12 box has-text-centered">
-    <div className="level">
-      <div className="">
-        <h3 className="title is-1">{name}</h3>
-        <h4 className="subtitle is-1">{translation}</h4>
-      </div>
-      <span className="delete level-right" onClick={()=>deselect(kiwi)}></span>
-    </div>
+  return <div onClick={() => deselect(kiwi)} className="column is-12 box has-text-centered">
+    <h3 className="title is-1">{name}</h3>
+    <h4 className="subtitle is-1">{translation}</h4>
+    <h4 className="subtitle is-2">ID: {id}</h4>
     <div className="columns is-centered">
       <div className="column is-6">
         <KiwiImage colour={colour} size={size * 2} />
