@@ -16,7 +16,7 @@ function getColour(){
 export default function createKiwi() {
   return {
     name: `${getName()} ${getName()}`,
-    size: getRandom(5),
+    size: getRandom(10),
     strength: getRandom(10),
     cuteness: getRandom(10),
     speed: getRandom(10),
