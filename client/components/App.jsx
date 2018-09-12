@@ -5,7 +5,6 @@ import {HashRouter as Router, Route} from 'react-router-dom'
 import Nav from './Nav'
 import Home from './Home'
 import Login from './Login'
-import Register from './Register'
 import MyKiwis from './MyKiwis'
 import AvailableKiwis from './AvailableKiwis'
 import Browse from './Browse'
@@ -19,7 +18,6 @@ const App = () => (
         <Route path="/" component={Nav} />
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
         <Route exact path="/mykiwis" component={MyKiwis} />
         <Route exact path="/grab" component={AvailableKiwis} />
         <Route exact path="/browse" component={Browse} />

@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-const Nav = ({myKey, availableKiwis, myKiwis}) => {
+const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
   const kiwi = <img className="nav-image" src="https://png.icons8.com/ios/1600/kiwi-bird-filled.png" />
   return <div className="navbar is-primary" role="navigation" aria-label="main navigation">
     <div className="navbar-start">
@@ -27,9 +27,9 @@ const Nav = ({myKey, availableKiwis, myKiwis}) => {
             Login
           </Link>
         </div>}
-        {!myKey && <div className="navbar-item">
-          <Link to="/register" className="button is-large is-success">
-            Register
+        {!!myKey && <div className="navbar-item">
+          <Link to="/" onClick={() => logout()} className="button is-large is-info">
+            Logout
           </Link>
         </div>}
         {!!myKey && <div className="navbar-item">
@@ -53,5 +53,11 @@ const Nav = ({myKey, availableKiwis, myKiwis}) => {
 }
 
 const mapStateToProps = (state) => (state)
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch({
+    type: 'LOGOUT'
+  })
+})
 
 export default connect(mapStateToProps)(Nav)

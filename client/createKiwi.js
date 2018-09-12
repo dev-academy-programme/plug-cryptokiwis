@@ -1,5 +1,7 @@
 import names from './names'
 
+let id = 1
+
 function getName() {
   const keys = Object.keys(names)
   return keys[Math.floor(Math.random() * keys.length)]
@@ -15,6 +17,7 @@ function getColour(){
 
 export default function createKiwi() {
   return {
+    id: id++,
     name: `${getName()} ${getName()}`,
     size: getRandom(10),
     strength: getRandom(10),
