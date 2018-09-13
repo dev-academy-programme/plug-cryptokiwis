@@ -135,8 +135,6 @@ All APIs should be on the endpoint of `/_api/v1/`
 [
   {
     id: 1,
-    sender: 'xyz',
-    receiver: 'abc',
     sender_kiwi_id: 7,
     receiver_kiwi_id: 1
   },
@@ -156,8 +154,6 @@ All APIs should be on the endpoint of `/_api/v1/`
 [
   {
     id: 1,
-    sender: 'xyz',
-    receiver: 'abc',
     sender_kiwi_id: 7,
     receiver_kiwi_id: 1
   },
@@ -177,8 +173,6 @@ All APIs should be on the endpoint of `/_api/v1/`
 [
   {
     id: 1,
-    sender: 'xyz',
-    receiver: 'abc',
     sender_kiwi_id: 7,
     receiver_kiwi_id: 1
   },
@@ -198,11 +192,134 @@ All APIs should be on the endpoint of `/_api/v1/`
 [
   {
     id: 1,
-    sender: 'xyz',
-    receiver: 'abc',
     sender_kiwi_id: 7,
     receiver_kiwi_id: 1
   },
   ...
 ]
+```
+
+## Client Sockets
+
+| Channel | Usage | Room | Info |
+| --- | --- | --- | --- |
+| "addKiwi" | When a new Kiwi has been bred | null | [Info](#add-kiwi) |
+| "addMyKiwi" | When a new Kiwi added belongs to the connected in user | <User Signing Key> | [Info](#add-my-kiwi) |
+| "addDanceOut" | When a new DanceOff Request has been created, outgoing from the socketed user | <User Signing Key> | [Info](#add-dance-off-outgoing) |
+| "addDanceIn" | When a new DanceOff Request has been created, directed to a Kiwi belonging to the socketed user | <User Signing Key> | [Info](#add-dance-off-incoming) |
+| "addBreedOut" | When a new Breed Request has been created, outgoing from the socketed user | User Signing Key | [Info](#add-breed-request-outgoing) |
+| "addBreedIn" | When a new Breed Request has been created, directed to a Kiwi belonging to the socketed user | User Signing Key | [Info](#add-dance-off-incoming) |
+
+### Add Kiwi
+
+| Channel | Usage | Room | Info |
+| --- | --- | --- | --- |
+| "addKiwi" | When a new Kiwi has been bred | null | [Info](#add-kiwi) |
+
+#### Response
+
+```js
+//socket.on('addKiwi', kiwi =>
+//where kiwi is
+{
+  id: 2,
+  name: "Kiwi Karakia",
+  size: 4,
+  strength: 7,
+  cuteness: 2,
+  speed: 2,
+  colour: #000000,
+  pursuers: 0,
+  wins: 0,
+  losses: 0
+}
+```
+
+### Add My Kiwi
+
+| Channel | Usage | Room | Info |
+| --- | --- | --- | --- |
+| "addMyKiwi" | When a new Kiwi added belongs to the connected in user | User Signing Key | [Info](#add-my-kiwi) |
+
+#### Response
+
+```js
+//socket.on('addKiwi', kiwi =>
+//where kiwi is
+{
+  id: 2,
+  name: "Kiwi Karakia",
+  size: 4,
+  strength: 7,
+  cuteness: 2,
+  speed: 2,
+  colour: #000000,
+  pursuers: 0,
+  wins: 0,
+  losses: 0
+}
+```
+
+### Add Dance Off Outgoing
+
+| Channel | Usage | Room | Info |
+| --- | --- | --- | --- |
+| "addDanceOut" | When a new DanceOff Request has been created, outgoing from the socketed user | User Signing Key | [Info](#add-dance-off-outgoing) |
+
+#### Response
+
+``` js
+{
+  id: 1,
+  sender_kiwi_id: 7,
+  receiver_kiwi_id: 1
+}
+```
+
+### Add Dance Off Incoming
+
+| Channel | Usage | Room | Info |
+| --- | --- | --- | --- |
+| "addDanceIn" | When a new DanceOff Request has been created, directed to a Kiwi belonging to the socketed user | User Signing Key | [Info](#add-dance-off-incoming) |
+
+#### Response
+
+``` js
+{
+  id: 2,
+  sender_kiwi_id: 1,
+  receiver_kiwi_id: 7
+}
+```
+
+### Add Breed Reques Outgoing
+
+| Channel | Usage | Room | Info |
+| --- | --- | --- | --- |
+| "addBreedOut" | When a new Breed Request has been created, outgoing from the socketed user | User Signing Key | [Info](#add-breed-request-outgoing) |
+
+#### Response
+
+``` js
+{
+  id: 1,
+  sender_kiwi_id: 7,
+  receiver_kiwi_id: 1
+}
+```
+
+### Add Breed Request Incoming
+
+| Channel | Usage | Room | Info |
+| --- | --- | --- | --- |
+| "addBreedIn" | When a new Breed Request has been created, directed to a Kiwi belonging to the socketed user | User Signing Key | [Info](#add-dance-off-incoming) |
+
+#### Response
+
+``` js
+{
+  id: 2,
+  sender_kiwi_id: 1,
+  receiver_kiwi_id: 7
+}
 ```
