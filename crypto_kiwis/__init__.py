@@ -10,7 +10,7 @@ class Crypto_KiwisPlugin(Plugin):
     def setup(cls, registry):
         components = [
             crypto_kiwis.model.KiwiModel,
-            crypto_kiwis.transform.GainKiwi
+            crypto_kiwis.transform.GainKiwi,
             # Include your plugin's models/transforms/errors etc here.
         ]
 

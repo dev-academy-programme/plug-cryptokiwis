@@ -8,18 +8,19 @@ from dataclasses import dataclass
 from plug.abstract import Model
 
 # Define your plugin's models here.
-from crypto_kiwis import Kiwi
+# from crypto_kiwis import Kiwi
 
 @dataclass
 class KiwiModel(Model):
-    fqdn = "cryptokiwi.Kiwi"
-    kiwi:Kiwi
+    fqdn = "cryptokiwi.KiwiModel"
+    name: str
+
 
     @classmethod
     def default_factory(cls):
         return cls(
-            Kiwi()
-            # name="charmander",
+            # kiwi=Kiwi()
+            name="charmander"
             # colour="#ffffff",
             # size: 10,
             # strength: 10,
@@ -32,8 +33,9 @@ class KiwiModel(Model):
 
     @staticmethod
     def pack(registry, obj):
+        print('kiwi', self.name)
         return {
-            # "name": obj.name,
+            "name": obj.name,
             # "colour": obj.colour,
             # "size": obj.size,
             # "strength": obj.strength,
@@ -42,7 +44,7 @@ class KiwiModel(Model):
             # "wins": obj.wins,
             # "losses": obj.losses,
             # "pursuers": obj.pursuers,
-            "kiwi": obj.kiwi,
+            # "kiwi": obj.kiwi,
         }
 
     @classmethod
@@ -57,5 +59,5 @@ class KiwiModel(Model):
             # wins=payload["wins"],
             # losses=payload["losses"],
             # pursuers=payload["pursuers"],
-            kiwi=payload["kiwi"],
+            kiwi=payload["kiwi"]
         )

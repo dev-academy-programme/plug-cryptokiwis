@@ -1,6 +1,6 @@
 # @dataclass
 class Kiwi():
-    fqdn = "cryptokiwi.Kiwi"
+    # fqdn = "cryptokiwi.Kiwi"
     name:str
     colour:str
     size:int

@@ -26,4 +26,3 @@ class User:
             async with session.get("http://localhost:8181/_api/v1/state/-1/plug.model.NonceModel/" + self.address) as response:
                 data = await response.json()
                 self.nonce = data['value']
-                print(self.nonce)

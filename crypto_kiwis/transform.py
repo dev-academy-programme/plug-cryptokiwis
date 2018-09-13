@@ -12,40 +12,41 @@ import crypto_kiwis.error
 @dataclass
 class GainKiwi(Transform):
     fqdn = "cryptokiwis.GainKiwi"
-    receiver: str
-    kiwi:Kiwi
+    sender: str
+    name:str
+
+    print('kiwi model', KiwiModel.fqdn)
 
     def required_authorizations(self):
-        return {self.receiver}
+        return {self.sender}
 
     @staticmethod
     def required_models():
         return {KiwiModel.fqdn}
 
     def required_keys(self):
-        return {self.receiver, self.kiwi}
+        return {self.sender, self.name}
 
     @staticmethod
     def pack(registry, obj):
         return {
-            "receiver": obj.receiver,
-            "kiwi": obj.kiwi
+            "sender": obj.sender,
+            "name": obj.name
         }
 
     @classmethod
     def unpack(cls, registry, payload):
+        # print(registery, payload)
         return cls(
             sender=payload["sender"],
-            kiwi=payload["kiwi"],
+            name=payload["name"],
         )
 
     def verify(self, state_slice):
         kiwis = state_slice[KiwiModel.fqdn]
         print("kiwi state slice", kiwis)
 
-        if kiwis[self.sender]:
-            raise crypto_kiwis.error.NotEnoughMoneyError("Already a kiwi")
-
     def apply(self, state_slice):
+        print(state_slice)
         kiwis = state_slice[KiwiModel.fqdn]
-        kiwis[self.receiver].kiwi = self.kiwi
+        kiwis[self.sender].name = self.name

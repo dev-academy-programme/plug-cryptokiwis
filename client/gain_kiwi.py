@@ -20,28 +20,26 @@ async def init_gain_kiwi(signing_key_input):
     registry.register(GainKiwi)
 
     user = await User.load(signing_key_input)
-    kiwi=Kiwi()
-    print(kiwi.name)
-    print(kiwi.colour)
+    # kiwi=Kiwi()
+
     transform = GainKiwi(
-        receiver=user.address,
-        kiwi=kiwi,
+        sender=user.address,
+        name="charmander",
     )
     #
-    # challenge = transform.hash(sha256)
-    # proof = SingleKeyProof(user.address, user.nonce, challenge, 'balance.tutorial')
-    # proof.sign(user.signing_key)
-    # transaction = Transaction(transform, {proof.address: proof})
+    challenge = transform.hash(sha256)
+    proof = SingleKeyProof(user.address, user.nonce, challenge, 'crypto.kiwis')
+    proof.sign(user.signing_key)
+    transaction = Transaction(transform, {proof.address: proof})
     #
-    # event = Event(
-    #     event=TransactionEvent.ADD,
-    #     payload=transaction
-    # )
-    #
-    # payload = registry.pack(event)
-    #
-    # async with aiohttp.ClientSession() as session:
-    #     async with session.post("http://localhost:8181/_api/v1/transaction", json=payload) as response:
-    #         data = await response.json()
-    #
-    # print(data)
+    event = Event(
+        event=TransactionEvent.ADD,
+        payload=transaction
+    )
+
+    payload = registry.pack(event)
+    async with aiohttp.ClientSession() as session:
+        async with session.post("http://localhost:8181/_api/v1/transaction", json=payload) as response:
+            data = await response.json()
+
+    print(data)
