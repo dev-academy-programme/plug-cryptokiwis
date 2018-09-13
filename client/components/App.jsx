@@ -11,24 +11,50 @@ import Browse from './Browse'
 import BreedingRequests from './BreedingRequests'
 import DanceOffRequests from './DanceOffRequests'
 
+import * as danceOffApi from '../api/danceOff'
+import * as breedingApi from '../api/breeding'
+import {getMyKiwis} from '../api/myKiwis'
+import {getAllKiwis} from '../api/kiwis'
+
 import '../sass/styles.scss'
 
-const App = ({myKey}) => (
-  <div className="container">
-    <Router>
-      <React.Fragment>
-        <Route path="/" component={Nav} />
-        <Route exact path="/" component={Home} />
-        {!myKey && <Route exact path="/login" component={Login} />}
-        {!!myKey && <Route exact path="/mykiwis" component={MyKiwis} />}
-        <Route exact path="/browse" component={Browse} />
-        {!!myKey && <Route path="/breeding" component={BreedingRequests} />}
-        {!!myKey && <Route path="/dancing" component={DanceOffRequests} />}
-      </React.Fragment>
-    </Router>
-  </div>
-)
+class App extends React.Component {
+  componentDidMount() {
+    const {fetchMyData, myKey} = this.props
+    if (!!myKey) fetchMyData(myKey)
+  }
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    if (!!this.props.myKey && !prevProps.myKey) this.props.fetchMyData(myKey)
+  }
+  render() {
+    const {myKey} = this.props
+    return <div className="container">
+      <Router>
+        <React.Fragment>
+          <Route path="/" component={Nav} />
+          <Route exact path="/" component={Home} />
+          {!myKey && <Route exact path="/login" component={Login} />}
+          {!!myKey && <Route exact path="/mykiwis" component={MyKiwis} />}
+          <Route exact path="/browse" component={Browse} />
+          {!!myKey && <Route path="/breeding" component={BreedingRequests} />}
+          {!!myKey && <Route path="/dancing" component={DanceOffRequests} />}
+        </React.Fragment>
+      </Router>
+    </div>
+  }
+}
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = dispatch => ({
+  fetchMyData: myKey => {
+    dispatch(danceOffApi.getIncomingDanceOffRequests(myKey))
+    dispatch(danceOffApi.getOutgoingDanceOffRequests(myKey))
+    dispatch(breedingApi.getIncomingBreedingRequests(myKey))
+    dispatch(breedingApi.getOutgoingBreedingRequests(myKey))
+    dispatch(getMyKiwis(myKey))
+    dispatch(getAllKiwis(myKey))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
