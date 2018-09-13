@@ -13,6 +13,14 @@ import DanceOffRequests from './DanceOffRequests'
 
 import * as danceOffApi from '../api/danceOff'
 import * as breedingApi from '../api/breeding'
+import {
+  addIncomingDanceOffRequest,
+  addOutgoingDanceOffRequest
+} from '../actions/danceOff'
+import {
+  addIncomingBreedingRequest,
+  addOutgoingBreedingRequest
+} from '../actions/breeding'
 
 import {
   getMyKiwis,
@@ -72,6 +80,10 @@ const mapDispatchToProps = dispatch => ({
   arrangeSockets: socket => {
     socket.on('addKiwi', kiwi => dispatch(addKiwi(kiwi))),
     socket.on('addMyKiwi', kiwi => dispatch(addMyKiwi(kiwi)))
+    socket.on('addDanceOut', request => dispatch(addOutgoingDanceOffRequest(request)))
+    socket.on('addDanceIn', request => dispatch(addIncomingDanceOffRequest(request)))
+    socket.on('addBreedIn', request => dispatch(addIncomingBreedingRequest))
+    socket.on('addBreedOut', request => dispatch(addOutgoingBreedingRequest))
   }
 })
 
