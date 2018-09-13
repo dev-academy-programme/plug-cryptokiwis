@@ -33,4 +33,25 @@ PID 6297, send SIGINT or SIGTERM to exit.
 To get verbose consensus diagnostics, use --log-level=DEBUG
 2018-09-14 09:31:59,725 - INFO - 106 - Setting up ...
 2018-09-14 09:31:59,814 - INFO - 110 - Running ...
+
+```
+
+
+## Command Line
+
+### Create User
+
+To create a user from the command line, run
+
+``` sh
+python3 client create_user
+```
+
+You should see an output like
+
+```sh
+address: 1CAZVSMP4c3FueFQE8kKrLoXL2ViXMJeVX
+key: 0cd5d6a1c48f46cd2a4417bae9807e1d7573d0d0afae9eacab3999751911199a
+
+Keep it secret, keep it safe
 ```
