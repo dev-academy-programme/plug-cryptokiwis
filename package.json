@@ -4,7 +4,8 @@
   "description": "Form handling using React",
   "main": "client/index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "EDA",
