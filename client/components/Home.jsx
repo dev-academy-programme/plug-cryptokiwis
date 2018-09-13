@@ -14,13 +14,13 @@ const Home = ({myKey, myKiwis}) => {
         {!!myKey && <Link to="/mykiwis" className="button is-large is-fullwidth is-info">
           My Kiwis
         </Link>}
-        {!!myKey && <Link to="/requests" className="button is-large is-fullwidth is-success">
-          Breeding Requests
-        </Link>}
         <Link to="/browse" className="button is-large is-fullwidth is-warning has-text-dark">
           Browse Kiwis
         </Link>
-        <Link to="/dance" className="button is-large is-fullwidth is-danger has-text-dark">
+        {!!myKey && <Link to="/breeding" className="button is-large is-fullwidth is-success">
+          Breeding Requests
+        </Link>}
+        <Link to="/dancing" className="button is-large is-fullwidth is-danger has-text-dark">
           Dance Off
         </Link>
       </div>

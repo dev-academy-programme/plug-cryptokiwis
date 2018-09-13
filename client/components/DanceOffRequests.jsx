@@ -20,7 +20,7 @@ class DanceOffRequests extends React.Component {
     const {showIncoming, showOutgoing} = this.state
     const {danceOffRequestsIncoming, danceOffRequestsOutgoing} = this.props
     return <div className="section has-text-centered">
-      <h2 className="title is-2">Breeding Requests</h2>
+      <h2 className="title is-2">Dance Off Requests</h2>
       <hr />
       {danceOffRequestsIncoming.length > 0
         ? <button onClick={()=>this.toggleShow('showIncoming')} className={`button is-large is-fullwidth  column is-6 is-offset-3 is-${showIncoming ? 'warning': 'info'}`}>

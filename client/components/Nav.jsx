@@ -27,23 +27,23 @@ const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
             My Kiwis
           </Link>
         </div>}
-        {!!myKey && <div className="navbar-item">
-          <Link to="/requests" className="button is-success">
-            Breeding
-          </Link>
-        </div>}
         <div className="navbar-item">
           <Link to="/browse" className="button is-warning">
             Browse
           </Link>
         </div>
+        {!!myKey && <div className="navbar-item">
+          <Link to="/breeding" className="button is-success">
+            Breeding
+          </Link>
+        </div>}
         {!myKey && <div className="navbar-item">
           <Link to="/login" className="button is-info">
             Login
           </Link>
         </div>}
         {!!myKey && <div className="navbar-item">
-          <Link to="/" className="button is-danger">
+          <Link to="/dancing" className="button is-danger">
             Dance Off
           </Link>
         </div>}

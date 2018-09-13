@@ -36,7 +36,8 @@ class BreedingRequest extends React.Component {
       .find(kiwi => kiwi.id == receiver_kiwi_id)
 
     return <div className="box has-text-centered">
-      <h3 className="title is-3">{isIncoming ? `<-- Request ID: ${request.id}` : `Request ID: ${request.id} -->`}</h3>
+      <h3 className="title is-3">{senderKiwi.name} wants to Breed</h3>
+      <h3 className="subtitle is-3">{isIncoming ? `<-- Request ID: ${request.id}` : `Request ID: ${request.id} -->`}</h3>
       <div className="columns is-mobile">
         {this.renderKiwi(isIncoming ? receiverKiwi : senderKiwi, true)}
         {this.renderKiwi(!isIncoming ? receiverKiwi : senderKiwi, false)}

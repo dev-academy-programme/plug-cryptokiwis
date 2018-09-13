@@ -9,6 +9,7 @@ import Login from './Login'
 import MyKiwis from './MyKiwis'
 import Browse from './Browse'
 import BreedingRequests from './BreedingRequests'
+import DanceOffRequests from './DanceOffRequests'
 
 import '../sass/styles.scss'
 
@@ -21,7 +22,8 @@ const App = ({myKey}) => (
         {!myKey && <Route exact path="/login" component={Login} />}
         {!!myKey && <Route exact path="/mykiwis" component={MyKiwis} />}
         <Route exact path="/browse" component={Browse} />
-        {!!myKey && <Route path="/requests" component={BreedingRequests} />}
+        {!!myKey && <Route path="/breeding" component={BreedingRequests} />}
+        {!!myKey && <Route path="/dancing" component={DanceOffRequests} />}
       </React.Fragment>
     </Router>
   </div>
