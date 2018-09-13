@@ -6,6 +6,8 @@ import selectedKiwi from './selectedKiwi'
 import allKiwis from './allKiwis'
 import breedingRequestsIncoming from './breedingRequestsIncoming'
 import breedingRequestsOutgoing from './breedingRequestsOutgoing'
+import danceOffRequestsIncoming from './danceOffRequestsIncoming'
+import danceOffRequestsOutgoing from './danceOffRequestsOutgoing'
 
 export default combineReducers({
   myKiwis,
@@ -13,5 +15,7 @@ export default combineReducers({
   selectedKiwis: selectedKiwi,
   kiwis: allKiwis,
   breedingRequestsIncoming,
-  breedingRequestsOutgoing
+  breedingRequestsOutgoing,
+  danceOffRequestsIncoming,
+  danceOffRequestsOutgoing
 })
