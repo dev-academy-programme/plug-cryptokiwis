@@ -50,3 +50,151 @@ Go to http://localhost:8080/ to see the site.
 | Speed | No | 1 - 10 | Trait to make Kiwis desireable |
 | Strength | No | 1 - 10 | Trait to make Kiwis desireable |
 | Cuteness | No | 1 - 10 | Trait to make Kiwis desireable |
+
+
+## API
+
+The client code is created and will be expecting to receive certain information from different API endpoints.
+
+All APIs should be on the endpoint of `/_api/v1/`
+
+### Index
+
+| Method | Endpoint | Query | Purpose | Info |
+| --- | --- | --- | --- | --- |
+| GET | /kiwis | myKey=<SIGNING_KEY> | Retrieve a list of all kiwis to browse | [Info](#get-kiwis) |
+| GET | /kiwis/my | myKey=<SIGNING_KEY> | Retrieve a list of all kiwis owned by the user | [Info](#get-my-kiwis) |
+| GET | /breeding/incoming | myKey=<SIGNING_KEY> | Retrieve a list breeding requests towards kiwis owned by the user | [Info](#breeding-requests-incoming) |
+| GET | /breeding/outgoing | myKey=<SIGNING_KEY> | Retrieve a list breeding requests from kiwis owned by the user | [Info](#breeding-requests-outgoing) |
+| GET | /danceoff/incoming | myKey=<SIGNING_KEY> | Retrieve a list dance-off requests towards kiwis owned by the user | [Info](#dance-off-requests-incoming) |
+| GET | /danceoff/outgoing | myKey=<SIGNING_KEY> | Retrieve a list dance-off requests from kiwis owned by the user | [Info](#dance-off-requests-outgoing) |
+
+### Get Kiwis
+
+| Method | Endpoint | Data | Purpose | Info |
+| --- | --- | --- | --- | --- |
+| GET | /kiwis | myKey=<SIGNING_KEY> | Retrieve a list of all kiwis to browse | [Info](#get-kiwis) |
+
+
+#### Response
+
+``` js
+[
+  {
+    id: 1,
+    name: "Kumura Pai",
+    size: 4,
+    strength: 7,
+    cuteness: 2,
+    speed: 2,
+    colour: #ffffff,
+    pursuers: 3,
+    wins: 2,
+    losses: 6
+  },
+  ...
+]
+```
+
+### Get My Kiwis
+
+| Method | Endpoint | Query | Purpose | Info |
+| --- | --- | --- | --- | --- |
+| GET | /kiwis/my | myKey=<SIGNING_KEY> | Retrieve a list of all kiwis owned by the user | [Info](#get-my-kiwis) |
+
+
+#### Response
+
+```js
+[
+  {
+    id: 1,
+    name: "Kumura Pai",
+    size: 4,
+    strength: 7,
+    cuteness: 2,
+    speed: 2,
+    colour: #ffffff,
+    pursuers: 3,
+    wins: 2,
+    losses: 6
+  },
+  ...
+]
+```
+
+### Breeding Requests Incoming
+
+| Method | Endpoint | Query | Purpose | Info |
+| --- | --- | --- | --- | --- |
+| GET | /breeding/incoming | myKey=<SIGNING_KEY> | Retrieve a list breeding requests towards kiwis owned by the user | [Info](#breeding-requests-incoming) |
+
+``` js
+[
+  {
+    id: 1,
+    sender: 'xyz',
+    receiver: 'abc',
+    sender_kiwi_id: 7,
+    receiver_kiwi_id: 1
+  },
+  ...
+]
+```
+
+### Breeding Requests Outgoing
+
+| Method | Endpoint | Query | Purpose | Info |
+| --- | --- | --- | --- | --- |
+| GET | /breeding/outgoing | myKey=<SIGNING_KEY> | Retrieve a list breeding requests from kiwis owned by the user | [Info](#breeding-requests-outgoing) |
+
+``` js
+[
+  {
+    id: 1,
+    sender: 'xyz',
+    receiver: 'abc',
+    sender_kiwi_id: 7,
+    receiver_kiwi_id: 1
+  },
+  ...
+]
+```
+
+### Dance Off Requests Incoming
+
+| Method | Endpoint | Query | Purpose | Info |
+| --- | --- | --- | --- | --- |
+| GET | /danceoff/incoming | myKey=<SIGNING_KEY> | Retrieve a list dance-off requests towards kiwis owned by the user | [Info](#dance-off-requests-incoming) |
+
+``` js
+[
+  {
+    id: 1,
+    sender: 'xyz',
+    receiver: 'abc',
+    sender_kiwi_id: 7,
+    receiver_kiwi_id: 1
+  },
+  ...
+]
+```
+
+### Dance Off Requests Outgoing
+
+| Method | Endpoint | Query | Purpose | Info |
+| --- | --- | --- | --- | --- |
+| GET | /danceoff/outgoing | myKey=<SIGNING_KEY> | Retrieve a list dance-off requests from kiwis owned by the user | [Info](#dance-off-requests-outgoing) |
+
+``` js
+[
+  {
+    id: 1,
+    sender: 'xyz',
+    receiver: 'abc',
+    sender_kiwi_id: 7,
+    receiver_kiwi_id: 1
+  },
+  ...
+]
+```
