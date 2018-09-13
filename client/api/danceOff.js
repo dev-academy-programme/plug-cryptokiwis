@@ -5,6 +5,12 @@ import {
   receiveIncomingDanceOffRequests, receiveOutgoingDanceOffRequests
 } from '../actions/danceOff'
 
+//DELET THIS
+import {
+  danceOffRequestsIncoming,
+  danceOffRequestsOutgoing
+} from '../mocking'
+
 export const getIncomingDanceOffRequests = userKey =>
   dispatch => {
     request
@@ -13,7 +19,7 @@ export const getIncomingDanceOffRequests = userKey =>
       .then(res => {
         dispatch(receiveIncomingDanceOffRequests(res.body))
       })
-      .catch(err => console.error(err))
+      .catch(err => dispatch(receiveIncomingDanceOffRequests(danceOffRequestsIncoming)))
   }
 
 export const getOutgoingDanceOffRequests = userKey =>
@@ -24,5 +30,5 @@ export const getOutgoingDanceOffRequests = userKey =>
       .then(res => {
         dispatch(receiveOutgoingDanceOffRequests(res.body))
       })
-      .catch(err => console.error(err))
+      .catch(err => dispatch(receiveOutgoingDanceOffRequests(danceOffRequestsOutgoing)))
   }

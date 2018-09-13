@@ -5,6 +5,14 @@ import {
   receiveIncomingBreedingRequests, receiveOutgoingBreedingRequests
 } from '../actions/breeding'
 
+//DELET THIS
+import {
+  breedingRequestsIncoming,
+  breedingRequestsOutgoing
+} from '../mocking'
+
+console.log({breedingRequestsIncoming});
+
 export const getIncomingBreedingRequests = userKey =>
   dispatch => {
     request
@@ -13,7 +21,7 @@ export const getIncomingBreedingRequests = userKey =>
       .then(res => {
         dispatch(receiveIncomingBreedingRequests(res.body))
       })
-      .catch(err => console.error(err))
+      .catch(err => dispatch(receiveIncomingBreedingRequests(breedingRequestsIncoming)))
   }
 
 export const getOutgoingBreedingRequests = userKey =>
@@ -24,5 +32,5 @@ export const getOutgoingBreedingRequests = userKey =>
       .then(res => {
         dispatch(receiveOutgoingBreedingRequests(res.body))
       })
-      .catch(err => console.error(err))
+      .catch(err => dispatch(receiveOutgoingBreedingRequests(breedingRequestsOutgoing)))
   }

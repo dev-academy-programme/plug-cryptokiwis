@@ -1,12 +1,6 @@
-import createKiwi from '../createKiwi'
+import {RECEIVE_MY_KIWIS} from '../actions/kiwis'
 
-const initialState = [
-  createKiwi()
-]
-
-import RECEIVE_MY_KIWIS from '../actions/myKiwis'
-
-export default function myKiwisReducer (state = initialState, action) {
+export default function myKiwisReducer (state = [], action) {
   let newState = [...state]
   switch(action.type) {
     case RECEIVE_MY_KIWIS:

@@ -1,17 +1,6 @@
-import createKiwi from '../createKiwi'
+import {RECEIVE_ALL_KIWIS} from '../actions/kiwis'
 
-const initialState = [
-  createKiwi(),
-  createKiwi(),
-  createKiwi(),
-  createKiwi(),
-  createKiwi(),
-  createKiwi()
-]
-
-import RECEIVE_ALL_KIWIS from '../actions/kiwis'
-
-export default function (state = initialState, action) {
+export default function (state = [], action) {
   switch(action.type) {
     case RECEIVE_ALL_KIWIS:
       return action.kiwis
