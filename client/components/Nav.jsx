@@ -23,27 +23,32 @@ const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
     <div className="navbar-end">
       <div className="navbar-menu section">
         {!!myKey && <div className="navbar-item">
-          <Link to="/mykiwis" className="button is-medium is-info">
+          <Link to="/mykiwis" className="button is-info">
             My Kiwis
           </Link>
         </div>}
         {!!myKey && <div className="navbar-item">
-          <Link to="/requests" className="button is-medium is-success">
-            Breeding Requests
+          <Link to="/requests" className="button is-success">
+            Breeding
           </Link>
         </div>}
         <div className="navbar-item">
-          <Link to="/browse" className="button is-medium is-warning">
+          <Link to="/browse" className="button is-warning">
             Browse
           </Link>
         </div>
         {!myKey && <div className="navbar-item">
-          <Link to="/login" className="button is-medium is-info">
+          <Link to="/login" className="button is-info">
             Login
           </Link>
         </div>}
         {!!myKey && <div className="navbar-item">
-          <Link to="/" onClick={() => logout()} className="button is-medium is-danger">
+          <Link to="/" className="button is-danger">
+            Dance Off
+          </Link>
+        </div>}
+        {!!myKey && <div className="navbar-item">
+          <Link to="/" onClick={() => logout()} className="button is-dark">
             Logout
           </Link>
         </div>}

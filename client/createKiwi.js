@@ -25,7 +25,7 @@ export default function createKiwi() {
     speed: getRandom(10),
     colour: `#${getColour()}`,
     pursuers: getRandom(10) - 1,
-    wins: getRandom(20),
-    losses: getRandom(20)
+    wins: getRandom(10),
+    losses: getRandom(10)
   }
 }

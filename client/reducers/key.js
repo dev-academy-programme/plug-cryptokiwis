@@ -1,4 +1,4 @@
-import {get, set} from '../localstorage'
+import {get, set, remove} from '../localstorage'
 
 const initialState = get('key') || null
 
@@ -8,7 +8,7 @@ export default function keyReducer (state = initialState, action) {
       set('key', action.key)
       return action.key
     case 'LOGOUT':
-      set('key', null)
+      remove('key')
       return null
     default: return state
   }

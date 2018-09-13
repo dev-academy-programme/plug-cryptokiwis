@@ -7,3 +7,7 @@ export function get(key) {
 export function set(key, value) {
   localstorage.setItem(key, value)
 }
+
+export function remove(key) {
+  localstorage.removeItem(key)
+}
