@@ -4,6 +4,9 @@ export const DESELECT_KIWI = 'DESELECT_KIWI'
 export const RECEIVE_ALL_KIWIS = 'RECEIVE_ALL_KIWIS'
 export const RECEIVE_MY_KIWIS = 'RECEIVE_MY_KIWIS'
 
+export const ADD_KIWI = 'ADD_KIWI'
+export const ADD_MY_KIWI = 'ADD_MY_KIWI'
+
 export const receiveAllKiwis = kiwis => ({
   type: RECEIVE_ALL_KIWIS,
   kiwis
@@ -12,4 +15,14 @@ export const receiveAllKiwis = kiwis => ({
 export const receiveMyKiwis = kiwis => ({
   type: RECEIVE_MY_KIWIS,
   kiwis
+})
+
+export const addKiwi = kiwi => ({
+  type: ADD_KIWI,
+  kiwi
+})
+
+export const addMyKiwi = kiwi => ({
+  type: ADD_MY_KIWI,
+  kiwi
 })

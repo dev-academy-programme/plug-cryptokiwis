@@ -13,17 +13,28 @@ import DanceOffRequests from './DanceOffRequests'
 
 import * as danceOffApi from '../api/danceOff'
 import * as breedingApi from '../api/breeding'
+
 import {
   getMyKiwis,
   getAllKiwis
 } from '../api/kiwis'
+import {
+  addKiwi,
+  addMyKiwi
+} from '../actions/kiwis'
 
 import '../sass/styles.scss'
 
 class App extends React.Component {
   componentDidMount() {
-    const {fetchMyData, myKey} = this.props
+    const {
+      fetchMyData,
+      myKey,
+      socket,
+      arrangeSockets
+    } = this.props
     if (!!myKey) fetchMyData(myKey)
+    socket.on('newKiwi', kiwi => d)
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
     if (!!this.props.myKey && !prevProps.myKey) this.props.fetchMyData(this.props.myKey)
@@ -57,6 +68,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(breedingApi.getOutgoingBreedingRequests(myKey))
     dispatch(getMyKiwis(myKey))
     dispatch(getAllKiwis(myKey))
+  },
+  arrangeSockets: socket => {
+    socket.on('addKiwi', kiwi => dispatch(addKiwi(kiwi))),
+    socket.on('addMyKiwi', kiwi => dispatch(addMyKiwi(kiwi)))
   }
 })
 
