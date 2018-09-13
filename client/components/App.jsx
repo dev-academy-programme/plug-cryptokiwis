@@ -39,9 +39,11 @@ class App extends React.Component {
       fetchMyData,
       myKey,
       socket,
-      arrangeSockets
+      arrangeSockets,
+      getKiwis
     } = this.props
     if (!!myKey) fetchMyData(myKey)
+    else getKiwis()
     arrangeSockets(socket)
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -77,6 +79,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getMyKiwis(myKey))
     dispatch(getAllKiwis(myKey))
   },
+  getKiwis: () => dispatch(getAllKiwis())
   arrangeSockets: socket => {
     socket.on('addKiwi', kiwi => dispatch(addKiwi(kiwi))),
     socket.on('addMyKiwi', kiwi => dispatch(addMyKiwi(kiwi)))
