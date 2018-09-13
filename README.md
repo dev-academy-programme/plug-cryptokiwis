@@ -129,6 +129,8 @@ All APIs should be on the endpoint of `/_api/v1/`
 | --- | --- | --- | --- | --- |
 | GET | /breeding/incoming | myKey=<SIGNING_KEY> | Retrieve a list breeding requests towards kiwis owned by the user | [Info](#breeding-requests-incoming) |
 
+#### Response
+
 ``` js
 [
   {
@@ -147,6 +149,8 @@ All APIs should be on the endpoint of `/_api/v1/`
 | Method | Endpoint | Query | Purpose | Info |
 | --- | --- | --- | --- | --- |
 | GET | /breeding/outgoing | myKey=<SIGNING_KEY> | Retrieve a list breeding requests from kiwis owned by the user | [Info](#breeding-requests-outgoing) |
+
+#### Response
 
 ``` js
 [
@@ -167,6 +171,8 @@ All APIs should be on the endpoint of `/_api/v1/`
 | --- | --- | --- | --- | --- |
 | GET | /danceoff/incoming | myKey=<SIGNING_KEY> | Retrieve a list dance-off requests towards kiwis owned by the user | [Info](#dance-off-requests-incoming) |
 
+#### Response
+
 ``` js
 [
   {
@@ -185,6 +191,8 @@ All APIs should be on the endpoint of `/_api/v1/`
 | Method | Endpoint | Query | Purpose | Info |
 | --- | --- | --- | --- | --- |
 | GET | /danceoff/outgoing | myKey=<SIGNING_KEY> | Retrieve a list dance-off requests from kiwis owned by the user | [Info](#dance-off-requests-outgoing) |
+
+#### Response
 
 ``` js
 [
