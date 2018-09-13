@@ -35,8 +35,10 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devServer: {
+    contentBase: path.join(__dirname, 'src'),
     compress: true,
     hot: true,
+    port: 3000
   },
   devtool: 'source-map'
 }
