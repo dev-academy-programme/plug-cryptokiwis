@@ -42,7 +42,7 @@ class App extends React.Component {
       arrangeSockets
     } = this.props
     if (!!myKey) fetchMyData(myKey)
-    socket.on('newKiwi', kiwi => d)
+    arrangeSockets(socket)
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
     if (!!this.props.myKey && !prevProps.myKey) this.props.fetchMyData(this.props.myKey)
