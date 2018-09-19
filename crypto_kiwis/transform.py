@@ -5,48 +5,42 @@ import crypto_kiwis.error
 import crypto_kiwis.model
 
 from crypto_kiwis.model import KiwiModel
-from crypto_kiwis import Kiwi
 
 import crypto_kiwis.error
 
 @dataclass
 class GainKiwi(Transform):
-    fqdn = "cryptokiwis.GainKiwi"
-    sender: str
-    name:str
-
-    print('kiwi model', KiwiModel.fqdn)
+    fqdn = "cryptokiwi.GainKiwi"
+    receiver: str
+    name: str
 
     def required_authorizations(self):
-        return {self.sender}
+        return {self.receiver}
 
     @staticmethod
     def required_models():
         return {KiwiModel.fqdn}
 
     def required_keys(self):
-        return {self.sender, self.name}
+        return {self.receiver}
 
     @staticmethod
     def pack(registry, obj):
         return {
-            "sender": obj.sender,
-            "name": obj.name
+            "receiver": obj.receiver,
+            "name": obj.name,
         }
 
     @classmethod
     def unpack(cls, registry, payload):
-        # print(registery, payload)
         return cls(
-            sender=payload["sender"],
+            receiver=payload["receiver"],
             name=payload["name"],
         )
 
     def verify(self, state_slice):
         kiwis = state_slice[KiwiModel.fqdn]
-        print("kiwi state slice", kiwis)
 
     def apply(self, state_slice):
-        print(state_slice)
         kiwis = state_slice[KiwiModel.fqdn]
-        kiwis[self.sender].name = self.name
+        kiwis[self.receiver].name = self.name

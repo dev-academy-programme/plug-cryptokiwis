@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e85699a18af4654410090f1cf93cff293d34b6fea39899ac901cf369d821dcbd"
+            "sha256": "7b1be43bce42eaed007e9be25e85b5470593eb44b0025abefdd6e612d2940b12"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "2.7"
+            "python_version": "3.7"
         },
         "sources": [
             {
@@ -16,15 +16,15 @@
         ]
     },
     "default": {
-        "30e479b": {
-            "path": "./../../plug1/libs/plug-api-1.6.1.tar.gz"
-        },
-        "a2da198": {
-            "path": "./../../plug1/libs/plug-0.0.20.tar.gz"
+        "54fc45f": {
+            "path": "./../plug1/libs/plug-0.0.20"
         },
         "crypto-kiwis": {
             "editable": true,
             "path": "."
+        },
+        "plug-api": {
+            "path": "./../plug1/libs/plug-api-1.6.1"
         }
     },
     "develop": {}

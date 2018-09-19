@@ -13,6 +13,6 @@ class Crypto_KiwisPlugin(Plugin):
             crypto_kiwis.transform.GainKiwi,
             # Include your plugin's models/transforms/errors etc here.
         ]
-
+        print(components)
         for component in components:
             registry.register(component)
