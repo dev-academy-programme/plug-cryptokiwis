@@ -26,6 +26,7 @@ class GainKiwi(Transform):
 
     @staticmethod
     def pack(registry, obj):
+        print("obj", obj)
         return {
             "receiver": obj.receiver,
             "name": obj.name,
@@ -33,6 +34,7 @@ class GainKiwi(Transform):
 
     @classmethod
     def unpack(cls, registry, payload):
+        print("payload", payload)
         return cls(
             receiver=payload["receiver"],
             name=payload["name"],
@@ -43,4 +45,6 @@ class GainKiwi(Transform):
 
     def apply(self, state_slice):
         kiwis = state_slice[KiwiModel.fqdn]
-        kiwis[self.receiver].name = self.name
+        print("kiwis", kiwis)
+        print(kiwis[self.receiver])
+        kiwis[self.receiver]["kiwis"].append(self.name)

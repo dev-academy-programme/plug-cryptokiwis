@@ -6,7 +6,7 @@ from register import register_transform_event
 from crypto_kiwis.transform import GainKiwi
 from user import User
 
-async def init_gain_kiwi(client, signing_key_input):
+def init_gain_kiwi(client, signing_key_input):
     register_transform_event(GainKiwi)
 
     # user = await User.load(signing_key_input)

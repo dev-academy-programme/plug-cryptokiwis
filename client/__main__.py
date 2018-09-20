@@ -1,10 +1,10 @@
 from create_user import init_create_user
 from gain_kiwi import init_gain_kiwi
+from kiwi_query import init_kiwi_query
 
 from api_client import get_api_client
 
 import click
-import asyncio
 
 @click.command()
 @click.argument('arg')
@@ -13,10 +13,13 @@ def init(arg):
     if arg == 'create_user':
         init_create_user()
         return
+    if arg == 'kiwi_query':
+        input_key = click.prompt("please enter a user signing key",)
+        init_kiwi_query(client, input_key)
+        return
     if arg == 'gain_kiwi':
         input_key = click.prompt("please enter a user signing key",)
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(init_gain_kiwi(client, input_key))
+        init_gain_kiwi(client, input_key)
         return
     else:
         print("Please Enter a valid argument:")

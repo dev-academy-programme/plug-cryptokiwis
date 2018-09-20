@@ -1,3 +1,4 @@
+
 from plug.abstract import Plugin
 
 import crypto_kiwis.error

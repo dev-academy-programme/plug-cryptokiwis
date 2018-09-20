@@ -4,22 +4,22 @@ from plug.abstract import Model
 @dataclass
 class KiwiModel(Model):
     fqdn = "cryptokiwi.KiwiModel"
-    name: str
+    kiwis = []
 
     @classmethod
     def default_factory(cls):
         return cls(
-            name="charmander"
+            kiwis=[]
         )
 
     @staticmethod
     def pack(registry, obj):
         return {
-            "name": obj.name,
+            "kiwis": obj.kiwis,
         }
 
     @classmethod
     def unpack(cls, registry, payload):
         return cls(
-            name=payload["name"]
+            kiwis=payload["kiwis"]
         )
