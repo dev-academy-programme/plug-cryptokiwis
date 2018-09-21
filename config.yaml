@@ -4,6 +4,11 @@ plug:
   registry:
     plugins:
     - crypto_kiwis.Crypto_KiwisPlugin
+    classes:
+    - crypto_kiwis.model.KiwiModel
+  indexers:
+    cryptokiwi.KiwiModel:
+    - crypto_kiwis.model.KiwiIndexer
   storage:
     class: plug.storage.sqlite.SqliteStorage
     path: db.sqlite

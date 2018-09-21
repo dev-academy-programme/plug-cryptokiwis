@@ -1,23 +1,21 @@
 # @dataclass
-class Kiwi():
-    # fqdn = "cryptokiwi.Kiwi"
-    name:str
-    colour:str
-    size:int
-    strength:int
-    speed:int
-    cuteness:int
-    wins:int
-    losses:int
-    pursuers:int
+class KiwiModel():
+    fqdn = "cryptokiwi.Kiwi"
 
-    def __init__(self):
-        self.name="charmander"
-        self.colour="#ffffff"
-        self.size=10
-        self.strength=10
-        self.speed=10
-        self.cuteness=10
-        self.wins=0
-        self.losses=0
-        self.pursuers=0
+    name:str = 'Charmander'
+
+    @classmethod
+    def default_factory(cls):
+        return cls()
+
+    @staticmethod
+    def pack(registry, obj):
+        return {
+            "name": obj.name,
+        }
+
+    @classmethod
+    def unpack(cls, registry, payload):
+        return cls(
+            name=payload["name"]
+        )
