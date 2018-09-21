@@ -1,0 +1,10 @@
+plug:
+  network_id: crypto.kiwis
+  max_block_size: 1000
+  registry:
+    plugins:
+    - crypto_kiwis.Crypto_KiwisPlugin
+  storage:
+    class: plug.storage.sqlite.SqliteStorage
+    path: db.sqlite
+    store_n_states: 10
