@@ -2,6 +2,8 @@
 tmp*.py
 *.benchmark
 plug/dashboard/config.json
+Pipfile
+Pipfile.lock
 
 ### Linux ###
 *~
