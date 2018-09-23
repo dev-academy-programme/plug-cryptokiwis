@@ -47,4 +47,4 @@ class GainKiwi(Transform):
         kiwis = state_slice[KiwiModel.fqdn]
         print("kiwis", kiwis)
         print(kiwis[self.receiver])
-        kiwis[self.receiver]["kiwis"].append(self.name)
+        # kiwis[self.receiver]["kiwis"].append(self.name)

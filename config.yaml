@@ -8,7 +8,7 @@ plug:
     - crypto_kiwis.model.KiwiModel
   indexers:
     cryptokiwi.KiwiModel:
-    - crypto_kiwis.model.KiwiIndexer
+    - crypto_kiwis.indexer.KiwiIndexer
   storage:
     class: plug.storage.sqlite.SqliteStorage
     path: db.sqlite
