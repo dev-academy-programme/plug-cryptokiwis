@@ -4,7 +4,7 @@ from plug.abstract import Transform
 import crypto_kiwis.error
 import crypto_kiwis.model
 
-from crypto_kiwis.model import KiwiModel
+from crypto_kiwis.model import KiwiModel, KiwiCollectionModel
 
 import crypto_kiwis.error
 
@@ -19,14 +19,14 @@ class GainKiwi(Transform):
 
     @staticmethod
     def required_models():
-        return {KiwiModel.fqdn}
+        return {KiwiModel.fqdn, KiwiCollectionModel.fqdn}
 
     def required_keys(self):
-        return {self.receiver}
+        return {self.receiver, '_unclaimed'}
 
     @staticmethod
     def pack(registry, obj):
-        print("obj", obj)
+        #print("obj", obj)
         return {
             "receiver": obj.receiver,
             "name": obj.name,
@@ -34,17 +34,17 @@ class GainKiwi(Transform):
 
     @classmethod
     def unpack(cls, registry, payload):
-        print("payload", payload)
+        #print("payload", payload)
         return cls(
             receiver=payload["receiver"],
             name=payload["name"],
         )
 
     def verify(self, state_slice):
+        print(state_slice)
         kiwis = state_slice[KiwiModel.fqdn]
 
     def apply(self, state_slice):
-        kiwis = state_slice[KiwiModel.fqdn]
+        kiwis = state_slice[KiwiCollectionModel.fqdn]
         print("kiwis", kiwis)
-        print(kiwis[self.receiver])
         # kiwis[self.receiver]["kiwis"].append(self.name)

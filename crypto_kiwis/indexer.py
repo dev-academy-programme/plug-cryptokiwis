@@ -10,7 +10,7 @@ class KiwiIndexer(PersistToFileMixin, ModelIndexer):
         if '_all' not in self:
             self['_all'] = []
         self['_all'].append(key)
-        print(self['_all'])
+        print('indexer[_all]', self['_all'])
 
     def remove(self, key, value=None):
         if value is None:
