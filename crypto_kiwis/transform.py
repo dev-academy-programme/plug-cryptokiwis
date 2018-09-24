@@ -22,7 +22,7 @@ class GainKiwi(Transform):
         return {KiwiModel.fqdn, KiwiCollectionModel.fqdn}
 
     def required_keys(self):
-        return {self.receiver, 'generationOne'}
+        return {self.receiver, '_unclaimed'}
 
     @staticmethod
     def pack(registry, obj):
