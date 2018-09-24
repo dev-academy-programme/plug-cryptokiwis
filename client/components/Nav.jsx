@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
+export const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
   const kiwi = <img className="nav-image" src="https://png.icons8.com/ios/1600/kiwi-bird-filled.png" />
   return <div className="navbar is-primary" role="navigation" aria-label="main navigation">
     <div className="navbar-start">

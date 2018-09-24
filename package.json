@@ -5,6 +5,7 @@
   "main": "client/index.js",
   "scripts": {
     "start": "webpack-dev-server --hot",
+    "test": "jest",
     "build": "webpack"
   },
   "keywords": [],
@@ -22,7 +23,8 @@
     "css-loader": "^0.28.10",
     "file-loader": "^2.0.0",
     "font-awesome": "^4.7.0",
-    "jsdom": "^11.0.0",
+    "jest": "^23.6.0",
+    "jsdom": "^12.0.0",
     "jsx-loader": "^0.13.2",
     "nock": "^9.6.1",
     "node-sass": "^4.7.2",
