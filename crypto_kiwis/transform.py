@@ -12,21 +12,21 @@ class ClaimKiwi(Transform):
     kiwi_id: str
 
     def required_authorizations(self):
-        return {self.receiver, self.kiwi_key}
+        return {self.claimer}
 
     @staticmethod
     def required_models():
         return {KiwiModel.fqdn, KiwiCollectionModel.fqdn}
 
     def required_keys(self):
-        return {self.receiver, '_unclaimed'}
+        return {self.claimer, '_unclaimed'}
 
     @staticmethod
     def pack(registry, obj):
         #print("obj", obj)
         return {
             "kiwi_key": obj.kiwi_key,
-            "receiver": obj.receiver,
+            "claimer": obj.claimer,
             "name": obj.name,
         }
 
@@ -35,7 +35,7 @@ class ClaimKiwi(Transform):
         #print("payload", payload)
         return cls(
             kiwi_key=payload["kiwi_key"],
-            receiver=payload["receiver"],
+            claimer=payload["claimer"],
             name=payload["name"],
         )
 
@@ -48,15 +48,3 @@ class ClaimKiwi(Transform):
         print("unclaimed", collection["_unclaimed"])
         unclaimed = collection["_unclaimed"]
 
-        ##good from here
-        kiwis = collection["_unclaimed"].kiwis
-        kiwi = collection["_unclaimed"].kiwis[0]
-        print("kiwis", kiwis)
-        kiwis.remove(kiwi)
-        print("kiwis after removal", kiwis)
-
-
-        print("kiwi model before add", state_slice[KiwiModel.fqdn])
-        state_slice[KiwiModel.fqdn][self.kiwi_key] = kiwi
-        print("kiwi model after add", state_slice[KiwiModel.fqdn])
-        ## good above here

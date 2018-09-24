@@ -4,7 +4,8 @@ from plug.abstract import Model
 @dataclass
 class KiwiModel(Model):
     fqdn = "cryptokiwi.KiwiModel"
-    name:str
+    name:str = ""
+    owner_address:str = ""
 
     @classmethod
     def default_factory(cls):
@@ -27,7 +28,7 @@ class KiwiModel(Model):
 @dataclass
 class KiwiCollectionModel(Model):
     fqdn = "cryptokiwi.KiwiCollectionModel"
-    kiwis:KiwiModel
+    kiwis = []
 
     @classmethod
     def default_factory(cls):

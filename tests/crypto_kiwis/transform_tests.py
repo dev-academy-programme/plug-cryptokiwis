@@ -19,7 +19,7 @@ def test_claim_initial_kiwi_success(
 
     transform = ClaimKiwi(
         claimer=claimer_address,
-        kiwi_id=1
+        kiwi_id="1"
     )
 
     state = create_state(dapp_registry)
@@ -29,7 +29,7 @@ def test_claim_initial_kiwi_success(
 
     #act
     execute_transform(transform, state)
-    kiwi: KiwiModel = kiwis[1]
+    kiwi: KiwiModel = kiwis["1"]
 
     #assert
-    assert kiwis.owner_address == claimer_address
+    assert kiwi.owner_address == claimer_address
