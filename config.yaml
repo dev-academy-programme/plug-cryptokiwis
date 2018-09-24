@@ -14,8 +14,7 @@ plug:
     path: db.sqlite
     store_n_states: 10
   initial_state:
-    cryptokiwi.KiwiModel:
-      a:
-        name: 'jok'
-      b:
-        name: '123'
+    cryptokiwi.KiwiCollectionModel:
+      _unclaimed:
+        kiwis: 
+        - name: 'jok'
