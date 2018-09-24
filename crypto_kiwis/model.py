@@ -37,7 +37,7 @@ class KiwiCollectionModel(Model):
     def pack(registry, obj):
         #print('pack c', obj.kiwis)
         return {
-                "kiwis": [{'name': kiwi['name']} for kiwi in obj.kiwis]
+            "kiwis": [{'name': kiwi['name']} for kiwi in obj.kiwis]
         }
 
     @classmethod

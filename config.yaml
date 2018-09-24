@@ -16,5 +16,5 @@ plug:
   initial_state:
     cryptokiwi.KiwiCollectionModel:
       _unclaimed:
-        kiwis: 
-        - name: 'jok'
+        kiwis:
+          - name: 'Charmander'
