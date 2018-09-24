@@ -8,6 +8,7 @@ import KiwiStatTable from './KiwiStatTable'
 import {Router, Route} from 'react-router-dom'
 
 import names from '../names'
+import {deselectKiwi} from '../actions/kiwis'
 
 const KiwiPreview = ({kiwi, deselect, myKiwis}) => {
   const {
@@ -41,10 +42,7 @@ const KiwiPreview = ({kiwi, deselect, myKiwis}) => {
 const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
-  deselect: kiwi => dispatch({
-    type: 'DESELECT_KIWI',
-    kiwi
-  })
+  deselect: kiwi => deselectKiwi(kiwi)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(KiwiPreview)

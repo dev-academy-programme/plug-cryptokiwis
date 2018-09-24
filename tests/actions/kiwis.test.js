@@ -1,14 +1,16 @@
 import {
   RECEIVE_ALL_KIWIS,
-  receiveAllKiwis,
   RECEIVE_MY_KIWIS,
-  receiveMyKiwis,
   ADD_KIWI,
-  addKiwi,
   ADD_MY_KIWI,
-  addMyKiwi,
   SELECT_KIWI,
-  DESELECT_KIWI
+  DESELECT_KIWI,
+  receiveAllKiwis,
+  receiveMyKiwis,
+  addKiwi,
+  addMyKiwi,
+  selectKiwi,
+  deselectKiwi
 } from '../../client/actions/kiwis'
 
 test('action types are correct', () => {
@@ -74,4 +76,28 @@ test('addMyKiwi action', () => {
 
   expect(actual).toEqual(expected)
   expect(actual.kiwi).toBe(kiwi)
+})
+
+test('selectKiwi action', () => {
+  const kiwi = {name: 'Kumura'}
+  const expected = {
+    type: SELECT_KIWI,
+    kiwi
+  }
+
+  const actual = selectKiwi(kiwi)
+
+  expect(actual).toEqual(expected)
+})
+
+test('deselectKiwi action', () => {
+  const kiwi = {name: 'Kumura'}
+  const expected = {
+    type: DESELECT_KIWI,
+    kiwi
+  }
+
+  const actual = deselectKiwi(kiwi)
+
+  expect(actual).toEqual(expected)
 })

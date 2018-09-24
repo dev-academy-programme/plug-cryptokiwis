@@ -26,3 +26,13 @@ export const addMyKiwi = kiwi => ({
   type: ADD_MY_KIWI,
   kiwi
 })
+
+export const selectKiwi = kiwi => ({
+  type: SELECT_KIWI,
+  kiwi
+})
+
+export const deselectKiwi = kiwi => ({
+  type: DESELECT_KIWI,
+  kiwi
+})

@@ -71,7 +71,6 @@ const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
   fetchMyData: myKey => {
-    console.log("fetching data");
     dispatch(danceOffApi.getIncomingDanceOffRequests(myKey))
     dispatch(danceOffApi.getOutgoingDanceOffRequests(myKey))
     dispatch(breedingApi.getIncomingBreedingRequests(myKey))

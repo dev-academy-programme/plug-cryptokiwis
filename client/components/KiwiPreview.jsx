@@ -5,6 +5,8 @@ import {connect} from 'react-redux'
 import KiwiImage from './KiwiImage'
 import FullKiwiView from './FullKiwiView'
 
+import {selectKiwi} from '../actions/kiwis'
+
 const KiwiPreview = ({kiwi, selectedKiwis, select}) => {
   const {name, size, colour} = kiwi
   if (selectedKiwis.find(selected => selected == kiwi)) return <FullKiwiView kiwi={kiwi} />
@@ -17,10 +19,7 @@ const KiwiPreview = ({kiwi, selectedKiwis, select}) => {
 const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
-  select: kiwi => dispatch({
-    type: 'SELECT_KIWI',
-    kiwi
-  })
+  select: kiwi => selectKiwi(kiwi)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(KiwiPreview)
