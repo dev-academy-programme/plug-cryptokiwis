@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {saveKey} from '../actions/key'
+
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -35,10 +37,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: key => dispatch({
-    type: 'SAVE_KEY',
-    key
-  })
+  login: key => saveKey(key)
 })
 
 export default connect(null, mapDispatchToProps)(Login)
