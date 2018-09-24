@@ -1,19 +1,15 @@
 from dataclasses import dataclass
 from plug.abstract import Transform
 
-import crypto_kiwis.error
-import crypto_kiwis.model
-
 from crypto_kiwis.model import KiwiModel, KiwiCollectionModel
 
 import crypto_kiwis.error
 
 @dataclass
-class GainKiwi(Transform):
+class ClaimKiwi(Transform):
     fqdn = "cryptokiwi.GainKiwi"
-    receiver: str
-    name: str
-    kiwi_key: str
+    claimer: str
+    kiwi_id: str
 
     def required_authorizations(self):
         return {self.receiver, self.kiwi_key}
