@@ -4,6 +4,7 @@ tmp*.py
 plug/dashboard/config.json
 Pipfile
 Pipfile.lock
+keys.db
 
 ### Linux ###
 *~
