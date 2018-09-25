@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn test
+  /usr/bin/node /usr/bin/yarn test api
 
 PATH: 
   /home/symeshjb/bin:/home/symeshjb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
@@ -42,7 +42,7 @@ npm manifest:
       "jest": "^23.6.0",
       "jsdom": "^12.0.0",
       "jsx-loader": "^0.13.2",
-      "nock": "^9.6.1",
+      "nock": "^10.0.0",
       "node-sass": "^4.7.2",
       "postcss-loader": "^2.1.1",
       "react": "^16.5.0",
@@ -4303,9 +4303,9 @@ Lockfile:
     version "2.5.2"
     resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
   
-  nock@^9.6.1:
-    version "9.6.1"
-    resolved "https://registry.yarnpkg.com/nock/-/nock-9.6.1.tgz#d96e099be9bc1d0189a77f4490bbbb265c381b49"
+  nock@^10.0.0:
+    version "10.0.0"
+    resolved "https://registry.yarnpkg.com/nock/-/nock-10.0.0.tgz#bcbd2c003961baffcae2ecd28e074574233d3869"
     dependencies:
       chai "^4.1.2"
       debug "^3.1.0"
@@ -6881,7 +6881,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c jest
+  Arguments: -c jest api
   Directory: /home/symeshjb/workspace/plug/plug-cryptokiwis
   Output:
   

@@ -19,7 +19,10 @@ export const getAllKiwis = userKey =>
       .then(res => {
         dispatch(receiveAllKiwis(res.body))
       })
-      .catch(err => dispatch(receiveAllKiwis(allKiwis)))
+      .catch(err => {
+        console.log(err);
+        dispatch(receiveAllKiwis(allKiwis))
+      })
   }
 
 export const getMyKiwis = userKey =>
