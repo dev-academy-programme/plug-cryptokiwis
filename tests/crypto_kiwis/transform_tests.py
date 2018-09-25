@@ -31,9 +31,13 @@ def test_claim_initial_kiwi_success(
     config = Config(DEVELOP_NETWORK).load(config_file)
     state = create_state(dapp_registry, config['plug']['initial_state'])
 
+    before_length_unclaimed = len(state[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis)
+
     #act
     execute_transform(transform, state)
     kiwi: KiwiModel = state[KiwiModel.fqdn]["A123"]
 
+    remaining_unclaimed = state[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis
     #assert
+    assert len(remaining_unclaimed) == before_length_unclaimed - 1
     assert kiwi.owner_address == claimer_address

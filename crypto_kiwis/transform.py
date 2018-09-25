@@ -50,7 +50,6 @@ class ClaimKiwi(Transform):
 
         unclaimed = collection["_unclaimed"]
         kiwiDict = next(x for x in unclaimed.kiwis if x['id'] == self.kiwi_id)
-        print(state_slice[KiwiModel.fqdn])
 
         if kiwiDict:
             id = kiwiDict['id']
