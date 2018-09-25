@@ -27,7 +27,6 @@ class ClaimKiwi(Transform):
         return {
             "kiwi_id": obj.kiwi_id,
             "claimer": obj.claimer,
-            "name": obj.name,
         }
 
     @classmethod
@@ -36,7 +35,6 @@ class ClaimKiwi(Transform):
         return cls(
             kiwi_id=payload["kiwi_id"],
             claimer=payload["claimer"],
-            name=payload["name"],
         )
 
     def verify(self, state_slice):
@@ -52,4 +50,3 @@ class ClaimKiwi(Transform):
             id = kiwiDict['id']
             name = kiwiDict['name']
             state_slice[KiwiModel.fqdn][id] = KiwiModel(id, name, self.claimer)
-

@@ -19,7 +19,8 @@ def init(arg):
         return
     if arg == 'gain_kiwi':
         input_key = click.prompt("please enter a user signing key",)
-        init_gain_kiwi(client, input_key)
+        kiwi_id = click.prompt("please enter a the kiwi's id",)
+        init_gain_kiwi(client, input_key, kiwi_id)
         return
     else:
         print("Please Enter a valid argument:")
