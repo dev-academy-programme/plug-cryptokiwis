@@ -41,8 +41,12 @@ def test_claim_initial_kiwi_success(
 
     remaining_unclaimed = state[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis
     #assert
-    assert len(remaining_unclaimed) == before_length_unclaimed - 1
+    remaining_unclaimed_ids = [x['id'] for x in state[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis if x['id'] != "A123"]
+    
+    assert "B234" not in remaining_unclaimed_ids
     assert kiwi.owner_address == claimer_address
+    assert len(remaining_unclaimed) == before_length_unclaimed - 1
+
 
 
 def test_kiwi_claim_id_not_found_error(
