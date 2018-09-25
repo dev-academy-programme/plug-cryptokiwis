@@ -1,7 +1,7 @@
 from crypto_kiwis.transform import ClaimKiwi
 
 from client.utils import register_transform_event, get_key_manager
-from user import User
+from client.user import User
 
 def init_gain_kiwi(client, signing_key_input, kiwi_id):
     register_transform_event(ClaimKiwi)
