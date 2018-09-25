@@ -1,15 +1,7 @@
-from plug.message import Event
-from plug.registry import Registry
-
-from register import register_transform_event
-
 from crypto_kiwis.transform import ClaimKiwi
+
+from client.utils import register_transform_event, get_key_manager
 from user import User
-
-from plug.key import ED25519SigningKey
-from plug.util import plug_address
-
-from key_manager import get_key_manager
 
 def init_gain_kiwi(client, signing_key_input, kiwi_id):
     register_transform_event(ClaimKiwi)

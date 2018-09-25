@@ -3,6 +3,10 @@ import setuptools
 
 version = "0.0.1"
 
+install_requires = (
+
+)
+
 setuptools.setup(
     name="crypto_kiwis",
     version=version,
@@ -10,7 +14,7 @@ setuptools.setup(
     author_email="harrison@devacademy.co.nz",
     url="https://github.com/plug-cryptokiwis",
     packages=["crypto_kiwis"],
-    install_requires=(),
+    install_requires=install_requires,
     setup_requires=["pytest-runner"],
 
     extras_require={

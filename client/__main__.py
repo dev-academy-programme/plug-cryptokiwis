@@ -1,8 +1,8 @@
-from create_user import init_create_user
-from gain_kiwi import init_gain_kiwi
-from kiwi_query import init_kiwi_query
+from commands.create_user import init_create_user
+from commands.gain_kiwi import init_gain_kiwi
+from commands.kiwi_query import init_kiwi_query
 
-from api_client import get_api_client
+from utils import get_api_client
 
 import click
 
