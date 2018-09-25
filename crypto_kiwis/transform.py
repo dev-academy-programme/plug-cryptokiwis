@@ -25,7 +25,7 @@ class ClaimKiwi(Transform):
     def pack(registry, obj):
         #print("obj", obj)
         return {
-            "kiwi_key": obj.kiwi_key,
+            "kiwi_id": obj.kiwi_id,
             "claimer": obj.claimer,
             "name": obj.name,
         }
@@ -34,7 +34,7 @@ class ClaimKiwi(Transform):
     def unpack(cls, registry, payload):
         #print("payload", payload)
         return cls(
-            kiwi_key=payload["kiwi_key"],
+            kiwi_id=payload["kiwi_id"],
             claimer=payload["claimer"],
             name=payload["name"],
         )
@@ -45,6 +45,11 @@ class ClaimKiwi(Transform):
     def apply(self, state_slice):
         collection = state_slice[KiwiCollectionModel.fqdn]
 
-        print("unclaimed", collection["_unclaimed"])
         unclaimed = collection["_unclaimed"]
+        kiwiDict = next(x for x in unclaimed.kiwis if x['id'] == self.kiwi_id)
+
+        if kiwiDict:
+            id = kiwiDict['id']
+            name = kiwiDict['name']
+            state_slice[KiwiModel.fqdn][id] = KiwiModel(id, name, self.claimer)
 

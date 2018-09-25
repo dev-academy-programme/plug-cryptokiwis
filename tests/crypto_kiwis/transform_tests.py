@@ -10,6 +10,11 @@ from plug_api.testing import authenticate_transaction, create_state, \
 from crypto_kiwis.model import KiwiModel, KiwiCollectionModel
 from crypto_kiwis.transform import ClaimKiwi
 
+from pathlib import Path
+import crypto_kiwis
+from plug.config import Config
+from plug.cli.schema import DEVELOP_NETWORK
+
 def test_claim_initial_kiwi_success(
         dapp_registry: Registry,
         key_manager: KeyManager,
@@ -19,17 +24,16 @@ def test_claim_initial_kiwi_success(
 
     transform = ClaimKiwi(
         claimer=claimer_address,
-        kiwi_id="1"
+        kiwi_id="A123"
     )
 
-    state = create_state(dapp_registry)
-
-    unclaimed_kiwis = state[KiwiCollectionModel.fqdn]['_unclaimed']
-    kiwis = state[KiwiModel.fqdn]
+    config_file = (Path(crypto_kiwis.__path__[0]) / ".." / "config.yaml").resolve()
+    config = Config(DEVELOP_NETWORK).load(config_file)
+    state = create_state(dapp_registry, config['plug']['initial_state'])
 
     #act
     execute_transform(transform, state)
-    kiwi: KiwiModel = kiwis["1"]
+    kiwi: KiwiModel = state[KiwiModel.fqdn]["A123"]
 
     #assert
     assert kiwi.owner_address == claimer_address

@@ -4,8 +4,14 @@ from plug.abstract import Model
 @dataclass
 class KiwiModel(Model):
     fqdn = "cryptokiwi.KiwiModel"
-    name:str = ""
-    owner_address:str = ""
+    id:str
+    name:str
+    owner_address:str
+
+    def __init__(self, id, name, owner_address):
+        self.id = id
+        self.name = name
+        self.owner_address = owner_address
 
     @classmethod
     def default_factory(cls):
@@ -30,20 +36,21 @@ class KiwiCollectionModel(Model):
     fqdn = "cryptokiwi.KiwiCollectionModel"
     kiwis = []
 
+    def __init__(self, kiwis=[]):
+        self.kiwis = kiwis
+
     @classmethod
     def default_factory(cls):
         return cls()
 
     @staticmethod
     def pack(registry, obj):
-        #print('pack c', obj.kiwis)
         return {
-            "kiwis": [{'name': kiwi['name']} for kiwi in obj.kiwis]
+            "kiwis": obj.kiwis
         }
 
     @classmethod
     def unpack(cls, registry, payload):
-        #print('unpack c', payload)
         return cls(
-            kiwis=[KiwiModel(name=kiwi['name']) for kiwi in payload['kiwis']]
+            kiwis=payload['kiwis']
         )

@@ -17,4 +17,9 @@ plug:
     cryptokiwi.KiwiCollectionModel:
       _unclaimed:
         kiwis:
-          - name: 'Charmander'
+        - 
+          id: "A123"
+          name: 'Charmander'
+        - 
+          id: "B234"
+          name: 'Kayla'
