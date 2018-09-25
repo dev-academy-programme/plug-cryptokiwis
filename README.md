@@ -14,6 +14,7 @@ Run these commands to install
 pipenv install <PATH_TO_PLUG_CORE_LIBRARY>
 pipenv install <PATH_TO_PLUG_API_LIBRARY>
 pipenv install -e .
+pipenv install -d
 pipenv shell
 plug-dev create-network -n1 config.yaml -d ./nodes -f
 plug run --config ./nodes/node_0/config.yaml
@@ -36,6 +37,13 @@ To get verbose consensus diagnostics, use --log-level=DEBUG
 
 ```
 
+## Tests
+
+Run your tests with:
+
+``` sh
+python setup.py tests
+```
 
 ## Command Line
 
