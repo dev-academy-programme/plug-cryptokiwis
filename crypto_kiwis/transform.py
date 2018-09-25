@@ -38,7 +38,14 @@ class ClaimKiwi(Transform):
         )
 
     def verify(self, state_slice):
-        kiwis = state_slice[KiwiModel.fqdn]
+        unclaimed = state_slice[KiwiCollectionModel.fqdn]["_unclaimed"]
+
+        matches = [x for x in unclaimed.kiwis if x['id'] == self.kiwi_id]
+        print("found kiwis", matches)
+        if len(matches) == 0:
+            raise crypto_kiwis.error.KiwiNotFoundError("Kiwi not found with id: " + self.kiwi_id)
+        else:
+            pass
 
     def apply(self, state_slice):
         collection = state_slice[KiwiCollectionModel.fqdn]
