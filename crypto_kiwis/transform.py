@@ -19,7 +19,7 @@ class ClaimKiwi(Transform):
         return {KiwiModel.fqdn, KiwiCollectionModel.fqdn}
 
     def required_keys(self):
-        return {self.claimer, '_unclaimed'}
+        return {self.claimer, '_unclaimed', self.kiwi_id, 'kiwis', KiwiCollectionModel.fqdn}
 
     @staticmethod
     def pack(registry, obj):
@@ -41,19 +41,23 @@ class ClaimKiwi(Transform):
         unclaimed = state_slice[KiwiCollectionModel.fqdn]["_unclaimed"]
 
         matches = [x for x in unclaimed.kiwis if x['id'] == self.kiwi_id]
-        print("found kiwis", matches)
+
         if len(matches) == 0:
             raise crypto_kiwis.error.KiwiNotFoundError("Kiwi not found with id: " + self.kiwi_id)
-        else:
-            pass
 
     def apply(self, state_slice):
         collection = state_slice[KiwiCollectionModel.fqdn]
 
         unclaimed = collection["_unclaimed"]
         kiwiDict = next(x for x in unclaimed.kiwis if x['id'] == self.kiwi_id)
+        print(state_slice[KiwiModel.fqdn])
 
         if kiwiDict:
             id = kiwiDict['id']
             name = kiwiDict['name']
+
+            kiwis = [x for x in unclaimed.kiwis if x['id'] != id]
+
+            state_slice[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis = kiwis
+
             state_slice[KiwiModel.fqdn][id] = KiwiModel(id, name, self.claimer)
