@@ -11,8 +11,6 @@ import {
   breedingRequestsOutgoing
 } from '../mocking'
 
-console.log({breedingRequestsIncoming});
-
 export const getIncomingBreedingRequests = userKey =>
   dispatch => {
     request
