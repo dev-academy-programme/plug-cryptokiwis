@@ -9,6 +9,8 @@ from plug_api.testing import authenticate_transaction, create_state, \
 
 from crypto_kiwis.model import KiwiModel, KiwiCollectionModel
 from crypto_kiwis.transform import ClaimKiwi
+from crypto_kiwis.error import KiwiNotFoundError
+
 
 from pathlib import Path
 import crypto_kiwis
@@ -41,3 +43,30 @@ def test_claim_initial_kiwi_success(
     #assert
     assert len(remaining_unclaimed) == before_length_unclaimed - 1
     assert kiwi.owner_address == claimer_address
+
+
+def test_kiwi_claim_id_not_found_error(
+        dapp_registry: Registry,
+        key_manager: KeyManager,
+):
+    #arrange
+    claimer_address = key_manager.generate()
+
+    transform = ClaimKiwi(
+        claimer=claimer_address,
+        kiwi_id="thisIDdoesnotexist"
+    )
+
+    config_file = (Path(crypto_kiwis.__path__[0]) / ".." / "config.yaml").resolve()
+    config = Config(DEVELOP_NETWORK).load(config_file)
+    state = create_state(dapp_registry, config['plug']['initial_state'])
+
+    before_length_unclaimed = len(state[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis)
+
+    #act
+    with pytest.raises(KiwiNotFoundError):
+        execute_transform(transform, state)
+
+    remaining_unclaimed = state[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis
+    #assert
+    assert len(remaining_unclaimed) == before_length_unclaimed
