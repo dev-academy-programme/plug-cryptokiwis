@@ -35,14 +35,15 @@ class KiwiModel(Model):
 class BreedingRequest(Model):
     fqdn = "cryptokiwi.BreedingRequestModel"
     id:str
-    owner_address:str
+    owner_one_address:str
+    owner_two_address:str
     kiwi_one:str
     kiwi_two:str
 
-    def __init__(self, id, owner_address, kiwi_one, kiwi_two):
+    def __init__(self, id, owner_one_address, owner_two_address, kiwi_one, kiwi_two):
         self.id = id
-        self.name = name
-        self.owner_address = owner_address
+        self.owner_one_address = owner_one_address
+        self.owner_two_address = owner_two_address
         self.kiwi_one = kiwi_one
         self.kiwi_two = kiwi_two
 
@@ -55,7 +56,8 @@ class BreedingRequest(Model):
         #print('kiwi', obj)
         return {
             "id": obj.id,
-            "owner_address": obj.owner_address,
+            "owner_one_address": obj.owner_one_address,
+            "owner_two_address": obj.owner_two_address,
             "kiwi_one": obj.kiwi_one,
             "kiwi_two": obj.kiwi_two,
         }
@@ -66,7 +68,8 @@ class BreedingRequest(Model):
         return cls(
             name=payload["name"]
             id=payload["id"],
-            owner_address=payload["owner_address"],
+            owner_one_address=payload["owner_one_address"],
+            owner_two_address=payload["owner_two_address"],
             kiwi_one=payload["kiwi_one"],
             kiwi_two=payload["kiwi_two"],
         )
