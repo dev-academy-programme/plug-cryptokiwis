@@ -38,13 +38,11 @@ export class App extends React.Component {
     const {
       fetchMyData,
       myKey,
-      socket,
       arrangeSockets,
       getKiwis
     } = this.props
     if (!!myKey) fetchMyData(myKey)
     getKiwis()
-    // arrangeSockets(socket)
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
     if (!!this.props.myKey && !prevProps.myKey) this.props.fetchMyData(this.props.myKey)
@@ -79,15 +77,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getMyKiwis(myKey))
     dispatch(getAllKiwis(myKey))
   },
-  getKiwis: () => dispatch(getAllKiwis()),
-  arrangeSockets: socket => {
-    socket.on('addKiwi', kiwi => dispatch(addKiwi(kiwi))),
-    socket.on('addMyKiwi', kiwi => dispatch(addMyKiwi(kiwi)))
-    socket.on('addDanceOut', request => dispatch(addOutgoingDanceOffRequest(request)))
-    socket.on('addDanceIn', request => dispatch(addIncomingDanceOffRequest(request)))
-    socket.on('addBreedIn', request => dispatch(addIncomingBreedingRequest))
-    socket.on('addBreedOut', request => dispatch(addOutgoingBreedingRequest))
-  }
+  getKiwis: () => dispatch(getAllKiwis())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

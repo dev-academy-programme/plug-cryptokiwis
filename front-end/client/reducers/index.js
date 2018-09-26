@@ -8,7 +8,6 @@ import breedingRequestsIncoming from './breedingRequestsIncoming'
 import breedingRequestsOutgoing from './breedingRequestsOutgoing'
 import danceOffRequestsIncoming from './danceOffRequestsIncoming'
 import danceOffRequestsOutgoing from './danceOffRequestsOutgoing'
-import socket from './socket'
 
 export default combineReducers({
   myKiwis,
@@ -19,5 +18,4 @@ export default combineReducers({
   breedingRequestsOutgoing,
   danceOffRequestsIncoming,
   danceOffRequestsOutgoing,
-  socket
 })
