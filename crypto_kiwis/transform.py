@@ -59,4 +59,10 @@ class ClaimKiwi(Transform):
 
             state_slice[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis = kiwis
 
-            state_slice[KiwiModel.fqdn][id] = KiwiModel(id, name, self.claimer)
+            state_slice[KiwiModel.fqdn][id] = {
+                "id":id,
+                "name":name,
+                "owner_address":self.claimer,
+            }
+
+            # KiwiModel(id, name, self.claimer)
