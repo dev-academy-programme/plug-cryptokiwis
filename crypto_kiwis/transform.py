@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from plug.abstract import Transform
+from plug.key import ED25519SigningKey
 
 from crypto_kiwis.model import KiwiModel, KiwiCollectionModel
 
@@ -52,11 +53,51 @@ class InitiateBreedingRequest(Transform):
             raise crypto_kiwis.error.SoloOwnerError("You are not allowed to make your own Kiwis breed for some reason!")
 
 
-
     def apply(self, state_slice):
-        id = kiwiDict['id']
+        id = ED25519SigningKey.new()
         state_slice[BreedingRequest.fqdn][id] = BreedingRequestModel(id, owner_one_address, owner_two_address, kiwi_one, kiwi_two)
 
+@dataclass
+class RespondToBreedingRequest(Transform):
+    fqdn = "cryptokiwi.RespondToBreedingRequest"
+    request_id:str
+    owner_one_address:str
+    owner_two_address:str
+
+    def required_authorizations(self):
+        return {self.owner_two_address}
+
+    @staticmethod
+    def required_models():
+        return {KiwiModel.fqdn, KiwiCollectionModel.fqdn, BreedingRequestModel.fqdn}
+
+    def required_keys(self):
+        return {self.request_id, self.owner_one_address, self.owner_two_address}
+
+    @staticmethod
+    def pack(registry, obj):
+        #print("obj", obj)
+        return {
+            "request_id": obj.request_id,
+            "owner_one_address": obj.owner_one_address,
+            "owner_two_address": obj.owner_two_address,
+        }
+
+    @classmethod
+    def unpack(cls, registry, payload):
+        #print("payload", payload)
+        return cls(
+            request_id=payload["request_id"],
+            owner_one_address=payload["owner_one_address"],
+            owner_two_address=payload["owner_two_address"],
+        )
+
+    def verify(self, state_slice):
+
+
+    def apply(self, state_slice):
+        breeding_request = state_slice[BreedingRequest.fqdn][request_id]
+        # create the new kiwis
 
 @dataclass
 class ClaimKiwi(Transform):
