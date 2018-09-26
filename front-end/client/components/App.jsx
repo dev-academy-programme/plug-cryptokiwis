@@ -24,8 +24,10 @@ import {
 
 import {
   getMyKiwis,
-  getAllKiwis
+  getAllKiwis,
+  getUnclaimedKiwis
 } from '../api/kiwis'
+
 import {
   addKiwi,
   addMyKiwi
@@ -77,7 +79,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getMyKiwis(myKey))
     dispatch(getAllKiwis(myKey))
   },
-  getKiwis: () => dispatch(getAllKiwis())
+  getKiwis: () => {
+    dispatch(getUnclaimedKiwis())
+    dispatch(getAllKiwis())
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

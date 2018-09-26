@@ -3,6 +3,14 @@ from plug.abstract import RunnerIndexer
 from plug.indexer import PersistToFileMixin
 from plug.abstract import ModelIndexer
 
+class KiwiUnclaimedIndexer(PersistToFileMixin, ModelIndexer):
+    fqdn = "cryptokiwi.KiwiUnclaimedIndexer"
+    def update (self, key, value):
+        if '_all' not in self:
+            self['_all'] = {}
+
+        self[key] = value
+
 print(PersistToFileMixin)
 class KiwiIndexer(PersistToFileMixin, ModelIndexer):
     fqdn = "cryptoKiwi.KiwiIndexer"

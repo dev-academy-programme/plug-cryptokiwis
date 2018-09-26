@@ -3,6 +3,7 @@ export const DESELECT_KIWI = 'DESELECT_KIWI'
 
 export const RECEIVE_ALL_KIWIS = 'RECEIVE_ALL_KIWIS'
 export const RECEIVE_MY_KIWIS = 'RECEIVE_MY_KIWIS'
+export const RECEIVE_UNCLAIMED_KIWIS = "RECEIVE_UNCLAIMED_KIWIS"
 
 export const ADD_KIWI = 'ADD_KIWI'
 export const ADD_MY_KIWI = 'ADD_MY_KIWI'
@@ -14,6 +15,11 @@ export const receiveAllKiwis = kiwis => ({
 
 export const receiveMyKiwis = kiwis => ({
   type: RECEIVE_MY_KIWIS,
+  kiwis
+})
+
+export const receiveUnclaimedKiwis = kiwis => ({
+  type: RECEIVE_UNCLAIMED_KIWIS,
   kiwis
 })
 

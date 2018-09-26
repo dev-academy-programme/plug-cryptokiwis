@@ -9,6 +9,8 @@ plug:
   indexers:
     cryptokiwi.KiwiModel:
     - crypto_kiwis.indexer.KiwiIndexer
+    cryptokiwi.KiwiCollectionModel:
+    - crypto_kiwis.indexer.KiwiUnclaimedIndexer
   storage:
     class: plug.storage.sqlite.SqliteStorage
     path: db.sqlite

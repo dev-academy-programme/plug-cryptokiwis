@@ -4,7 +4,8 @@ import formatKiwis from '../format_kiwis'
 
 import {
   receiveAllKiwis,
-  receiveMyKiwis
+  receiveMyKiwis,
+  receiveUnclaimedKiwis
 } from '../actions/kiwis'
 
 import {
@@ -12,11 +13,28 @@ import {
   allKiwis
 } from '../mocking'
 
-const model = "cryptokiwi.KiwiModel"
-const indexer = "cryptoKiwi.KiwiIndexer"
+
+export const getUnclaimedKiwis = () =>
+  dispatch => {
+    const model = "cryptokiwi.KiwiCollectionModel"
+    const indexer = "cryptokiwi.KiwiUnclaimedIndexer"
+    request
+      .get(`${endpoint}query/${model}/${indexer}/_unclaimed`)
+      .then(res => {
+        console.log({res});
+        const kiwis = formatKiwis(res.body.payload)
+        dispatch(receiveUnclaimedKiwis(kiwis))
+      })
+      .catch(err => {
+        console.log({err});
+        dispatch(receiveUnclaimedKiwis(allKiwis))
+      })
+  }
 
 export const getAllKiwis = () =>
   dispatch => {
+    const model = "cryptokiwi.KiwiModel"
+    const indexer = "cryptoKiwi.KiwiIndexer"
     request
       .get(`${endpoint}query/${model}/${indexer}/_all`)
       .then(res => {
