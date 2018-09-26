@@ -14,3 +14,7 @@ class KiwiAlreadyClaimedError(VerificationError):
 class SoloBreedingError(VerificationError):
     fqdn = "cryptokiwi.error.SoloBreedingError"
     status_code = 400
+
+class SoloOwnerError(VerificationError):
+    fqdn = "cryptokiwi.error.SoloOwnerError"
+    status_code = 400

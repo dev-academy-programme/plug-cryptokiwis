@@ -48,6 +48,9 @@ class InitiateBreedingRequest(Transform):
         if self.kiwi_one is self.kiwi_two:
             raise crypto_kiwis.error.SoloBreedingError("Kiwis can not breed with themselves, no matter how hard they try.")
 
+        if self.owner_one_address is self.owner_two_address:
+            raise crypto_kiwis.error.SoloOwnerError("You are not allowed to make your own Kiwis breed for some reason!")
+
 
 
     def apply(self, state_slice):
