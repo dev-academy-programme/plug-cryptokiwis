@@ -37,7 +37,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: key => saveKey(key)
+  login: key => dispatch(saveKey(key))
 })
 
 export default connect(null, mapDispatchToProps)(Login)
