@@ -32,6 +32,46 @@ class KiwiModel(Model):
         )
 
 @dataclass
+class BreedingRequest(Model):
+    fqdn = "cryptokiwi.BreedingRequestModel"
+    id:str
+    owner_address:str
+    kiwi_one:str
+    kiwi_two:str
+
+    def __init__(self, id, owner_address, kiwi_one, kiwi_two):
+        self.id = id
+        self.name = name
+        self.owner_address = owner_address
+        self.kiwi_one = kiwi_one
+        self.kiwi_two = kiwi_two
+
+    @classmethod
+    def default_factory(cls):
+        return cls()
+
+    @staticmethod
+    def pack(registry, obj):
+        #print('kiwi', obj)
+        return {
+            "id": obj.id,
+            "owner_address": obj.owner_address,
+            "kiwi_one": obj.kiwi_one,
+            "kiwi_two": obj.kiwi_two,
+        }
+
+    @classmethod
+    def unpack(cls, registry, payload):
+        #print('kiwi', payload)
+        return cls(
+            name=payload["name"]
+            id=payload["id"],
+            owner_address=payload["owner_address"],
+            kiwi_one=payload["kiwi_one"],
+            kiwi_two=payload["kiwi_two"],
+        )
+
+@dataclass
 class KiwiCollectionModel(Model):
     fqdn = "cryptokiwi.KiwiCollectionModel"
     kiwis = []
