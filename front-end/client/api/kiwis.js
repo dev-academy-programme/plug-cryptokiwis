@@ -1,5 +1,6 @@
 import request from 'superagent'
 import endpoint from './endpoint'
+import formatKiwis from '../format_kiwis'
 
 import {
   receiveAllKiwis,
@@ -11,28 +12,33 @@ import {
   allKiwis
 } from '../mocking'
 
+const model = "cryptokiwi.KiwiModel"
+const indexer = "cryptoKiwi.KiwiIndexer"
+
 export const getAllKiwis = () =>
   dispatch => {
-    const model = "cryptokiwi.KiwiModel"
-    const indexer = "cryptokiwi.KiwiIndexer"
     request
-      .get(`${endpoint}kiwis/${model}/${indexer}/_all`)
+      .get(`${endpoint}query/${model}/${indexer}/_all`)
       .then(res => {
-        console.log({res});
-        dispatch(receiveAllKiwis(res.body))
+        const kiwis = formatKiwis(res.body.payload)
+        dispatch(receiveAllKiwis(kiwis))
       })
-      .catch(err => dispatch(receiveAllKiwis(allKiwis)))
+      .catch(err => {
+        dispatch(receiveAllKiwis(allKiwis))
+      })
   }
 
 export const getMyKiwis = userKey =>
   dispatch => {
     const model = "cryptokiwi.KiwiModel"
-    const indexer = "cryptokiwi.KiwiIndexer"
+    const indexer = "cryptoKiwi.KiwiIndexer"
     request
-      .get(`${endpoint}kiwis/${model}/${indexer}/${userKey}`)
+      .get(`${endpoint}query/${model}/${indexer}/${userKey}`)
       .then(res => {
-        console.log({res});
-        dispatch(receiveMyKiwis(res.body))
+        const kiwis = formatKiwis(res.body.payload)
+        dispatch(receiveMyKiwis(kiwis))
       })
-      .catch(err => dispatch(receiveMyKiwis(myKiwis)))
+      .catch(err => {
+        dispatch(receiveMyKiwis(myKiwis))
+      })
   }

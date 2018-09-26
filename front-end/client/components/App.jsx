@@ -43,11 +43,12 @@ export class App extends React.Component {
       getKiwis
     } = this.props
     if (!!myKey) fetchMyData(myKey)
-    else getKiwis()
-    arrangeSockets(socket)
+    getKiwis()
+    // arrangeSockets(socket)
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
     if (!!this.props.myKey && !prevProps.myKey) this.props.fetchMyData(this.props.myKey)
+    return null
   }
   render() {
     const {myKey} = this.props
