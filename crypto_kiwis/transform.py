@@ -45,11 +45,14 @@ class InitiateBreedingRequest(Transform):
         )
 
     def verify(self, state_slice):
+        if self.kiwi_one is self.kiwi_two:
+            raise crypto_kiwis.error.SoloBreedingError("Kiwis can not breed with themselves, no matter how hard they try.")
+
 
 
     def apply(self, state_slice):
 
-        
+
 @dataclass
 class ClaimKiwi(Transform):
     fqdn = "cryptokiwi.GainKiwi"
