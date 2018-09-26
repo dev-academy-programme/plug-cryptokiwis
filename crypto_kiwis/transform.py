@@ -54,6 +54,8 @@ class InitiateBreedingRequest(Transform):
 
 
     def apply(self, state_slice):
+        id = kiwiDict['id']
+        state_slice[BreedingRequest.fqdn][id] = BreedingRequestModel(id, owner_one_address, owner_two_address, kiwi_one, kiwi_two)
 
 
 @dataclass
