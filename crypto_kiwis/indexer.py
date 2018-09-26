@@ -3,6 +3,7 @@ from plug.abstract import RunnerIndexer
 from plug.indexer import PersistToFileMixin
 from plug.abstract import ModelIndexer
 
+print(PersistToFileMixin)
 class KiwiIndexer(PersistToFileMixin, ModelIndexer):
     fqdn = "cryptoKiwi.KiwiIndexer"
 
@@ -18,7 +19,4 @@ class KiwiIndexer(PersistToFileMixin, ModelIndexer):
         self[value["owner_address"]][key] = value
 
     def remove(self, key, value=None):
-        if value is None:
-            del self['all'][key]
-        else:
-            self['all'][key]
+        raise NotImplementedError()
