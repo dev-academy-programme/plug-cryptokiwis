@@ -66,7 +66,6 @@ class BreedingRequest(Model):
     def unpack(cls, registry, payload):
         #print('kiwi', payload)
         return cls(
-            name=payload["name"]
             id=payload["id"],
             owner_one_address=payload["owner_one_address"],
             owner_two_address=payload["owner_two_address"],
