@@ -22,12 +22,11 @@ export const getUnclaimedKiwis = () =>
       .get(`${endpoint}query/${model}/${indexer}/_unclaimed`)
       .then(res => {
         console.log({res});
-        const kiwis = formatKiwis(res.body.payload)
+        const kiwis = res.body.payload.kiwis
         dispatch(receiveUnclaimedKiwis(kiwis))
       })
       .catch(err => {
         console.log({err});
-        dispatch(receiveUnclaimedKiwis(allKiwis))
       })
   }
 
@@ -42,7 +41,6 @@ export const getAllKiwis = () =>
         dispatch(receiveAllKiwis(kiwis))
       })
       .catch(err => {
-        dispatch(receiveAllKiwis(allKiwis))
       })
   }
 
@@ -57,6 +55,5 @@ export const getMyKiwis = userKey =>
         dispatch(receiveMyKiwis(kiwis))
       })
       .catch(err => {
-        dispatch(receiveMyKiwis(myKiwis))
       })
   }

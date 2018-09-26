@@ -8,6 +8,7 @@ import Home from './Home'
 import Login from './Login'
 import MyKiwis from './MyKiwis'
 import Browse from './Browse'
+import Unclaimed from './Unclaimed'
 import BreedingRequests from './BreedingRequests'
 import DanceOffRequests from './DanceOffRequests'
 
@@ -51,7 +52,7 @@ export class App extends React.Component {
     return null
   }
   render() {
-    const {myKey} = this.props
+    const {myKey, myKiwis, unclaimedKiwis} = this.props
     return <div className="container">
       <Router>
         <React.Fragment>
@@ -59,6 +60,7 @@ export class App extends React.Component {
           <Route exact path="/" component={Home} />
           {!myKey && <Route exact path="/login" component={Login} />}
           {!!myKey && <Route exact path="/mykiwis" component={MyKiwis} />}
+          {!!myKey && myKiwis.length == 0 && unclaimedKiwis.length > 0 && <Route exact path="/unclaimed" component={Unclaimed} />}
           <Route exact path="/browse" component={Browse} />
           {!!myKey && <Route path="/breeding" component={BreedingRequests} />}
           {!!myKey && <Route path="/dancing" component={DanceOffRequests} />}

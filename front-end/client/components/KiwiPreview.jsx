@@ -19,7 +19,7 @@ const KiwiPreview = ({kiwi, selectedKiwis, select}) => {
 const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
-  select: kiwi => selectKiwi(kiwi)
+  select: kiwi => dispatch(selectKiwi(kiwi))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(KiwiPreview)

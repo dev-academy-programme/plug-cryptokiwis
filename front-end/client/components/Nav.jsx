@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 import {logout} from '../actions/key'
 
-export const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
+export const Nav = ({myKey, unclaimedKiwis, myKiwis, logout}) => {
   const kiwi = <img className="nav-image" src="https://png.icons8.com/ios/1600/kiwi-bird-filled.png" />
   return <div className="navbar is-primary" role="navigation" aria-label="main navigation">
     <div className="navbar-start">
@@ -24,11 +24,17 @@ export const Nav = ({myKey, availableKiwis, myKiwis, logout}) => {
     </div>
     <div className="navbar-end">
       <div className="navbar-menu section">
-        {!!myKey && <div className="navbar-item">
+        {!!myKey && myKiwis.length > 0 && <div className="navbar-item">
           <Link to="/mykiwis" className="button is-info">
             My Kiwis
           </Link>
         </div>}
+        {!!myKey && myKiwis.length == 0 && unclaimedKiwis.length > 0 &&  <div className="navbar-item">
+          <Link to="/unclaimed" className="button is-info">
+            Grab a Kiwi
+          </Link>
+        </div>}
+
         <div className="navbar-item">
           <Link to="/browse" className="button is-warning">
             Browse
