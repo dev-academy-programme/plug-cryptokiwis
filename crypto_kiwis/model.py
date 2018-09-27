@@ -23,20 +23,18 @@ class KiwiModel(Model):
 
     @staticmethod
     def pack(registry, obj):
-        #print('kiwi', obj)
         return {
             "id": obj.id,
             "name": obj.name,
             "owner_address": obj.owner_address,
             "colour": obj.colour,
-            "sized": obj.sized,
+            "size": obj.size,
         }
 
     @classmethod
     def unpack(cls, registry, payload):
-        #print('kiwi', payload)
         return cls(
-            id=paylaod["id"],
+            id=payload["id"],
             name=payload["name"],
             owner_address=payload["owner_address"],
             colour=payload["colour"],

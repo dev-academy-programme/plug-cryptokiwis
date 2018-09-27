@@ -12,7 +12,7 @@ class ClaimKiwi(Transform):
     kiwi_id: str
 
     def required_authorizations(self):
-        return {self.claimer}
+        return set()
 
     @staticmethod
     def required_models():
@@ -23,7 +23,6 @@ class ClaimKiwi(Transform):
 
     @staticmethod
     def pack(registry, obj):
-        #print("obj", obj)
         return {
             "kiwi_id": obj.kiwi_id,
             "claimer": obj.claimer,
@@ -31,7 +30,6 @@ class ClaimKiwi(Transform):
 
     @classmethod
     def unpack(cls, registry, payload):
-        #print("payload", payload)
         return cls(
             kiwi_id=payload["kiwi_id"],
             claimer=payload["claimer"],
@@ -58,7 +56,7 @@ class ClaimKiwi(Transform):
             size = kiwiDict['size']
 
             kiwis = [x for x in unclaimed.kiwis if x['id'] != id]
-
+            
             state_slice[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis = kiwis
 
             state_slice[KiwiModel.fqdn][id] = {
