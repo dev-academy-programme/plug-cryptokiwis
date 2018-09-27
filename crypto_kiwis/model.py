@@ -7,11 +7,15 @@ class KiwiModel(Model):
     id:str
     name:str
     owner_address:str
+    colour:str
+    size: int
 
-    def __init__(self, id, name, owner_address):
+    def __init__(self, id, name, owner_address, colour, size):
         self.id = id
         self.name = name
         self.owner_address = owner_address
+        self.colour = colour
+        self.size = size
 
     @classmethod
     def default_factory(cls):
@@ -24,6 +28,8 @@ class KiwiModel(Model):
             "id": obj.id,
             "name": obj.name,
             "owner_address": obj.owner_address,
+            "colour": obj.colour,
+            "sized": obj.sized,
         }
 
     @classmethod
@@ -32,7 +38,9 @@ class KiwiModel(Model):
         return cls(
             id=paylaod["id"],
             name=payload["name"],
-            owner_address=payload["owner_address"]
+            owner_address=payload["owner_address"],
+            colour=payload["colour"],
+            size=payload["size"]
         )
 
 @dataclass

@@ -54,6 +54,8 @@ class ClaimKiwi(Transform):
         if kiwiDict:
             id = kiwiDict['id']
             name = kiwiDict['name']
+            colour = kiwiDict['colour']
+            size = kiwiDict['size']
 
             kiwis = [x for x in unclaimed.kiwis if x['id'] != id]
 
@@ -63,6 +65,8 @@ class ClaimKiwi(Transform):
                 "id":id,
                 "name":name,
                 "owner_address":self.claimer,
+                "colour": colour,
+                "size": size,
             }
 
             # KiwiModel(id, name, self.claimer)

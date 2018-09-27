@@ -9,6 +9,8 @@ plug:
   indexers:
     cryptokiwi.KiwiModel:
     - crypto_kiwis.indexer.KiwiIndexer
+    cryptokiwi.KiwiCollectionModel:
+    - crypto_kiwis.indexer.KiwiUnclaimedIndexer
   storage:
     class: plug.storage.sqlite.SqliteStorage
     path: db.sqlite
@@ -17,9 +19,103 @@ plug:
     cryptokiwi.KiwiCollectionModel:
       _unclaimed:
         kiwis:
-        - 
+        -
           id: "A123"
-          name: 'Charmander'
-        - 
-          id: "B234"
-          name: 'Kayla'
+          name: 'Ahi Patu'
+          colour: "#f6a26d"
+          size: 10
+        -
+          id: "B123"
+          name: 'Ao Papa'
+          colour: "#3249ce"
+          size: 10
+        -
+          id: "C123"
+          name: 'Ara Pakihi'
+          colour: "#cf6b08"
+          size: 9
+        -
+          id: "D123"
+          name: 'Ariki Pai'
+          colour: "#9a494a"
+          size: 9
+        -
+          id: "E123"
+          name: 'Aroha Pahu'
+          colour: "#f68309"
+          size: 8
+        -
+          id: "F123"
+          name: 'Atua Pae'
+          colour: "#eba135"
+          size: 8
+        -
+          id: "G123"
+          name: 'Awa One'
+          colour: "#5284e0"
+          size: 7
+        -
+          id: "H123"
+          name: 'Haere Nui'
+          colour: "#6a9262"
+          size: 7
+        -
+          id: "H123"
+          name: 'Haraki Noa'
+          colour: "#b2ed68"
+          size: 6
+        -
+          id: "I123"
+          name: 'Hapu Nikau'
+          colour: "#1e9843"
+          size: 6
+        -
+          id: "J123"
+          name: 'Hau Niho'
+          colour: "#c334fb"
+          size: 5
+        -
+          id: "K123"
+          name: 'Heke Mutu'
+          colour: "#4ec81f"
+          size: 5
+        -
+          id: "L123"
+          name: 'Hiki Muri'
+          colour: "#6a88b4"
+          size: 4
+        -
+          id: "M123"
+          name: 'Hua Motu'
+          colour: "#34e09e"
+          size: 4
+        -
+          id: "N123"
+          name: 'Hui Morehu'
+          colour: "#e1ad9a"
+          size: 3
+        -
+          id: "O123"
+          name: 'Ika Mokihi'
+          colour: "#41cf7b"
+          size: 3
+        -
+          id: "P123"
+          name: 'Iti Moana'
+          colour: "#7a70db"
+          size: 2
+        -
+          id: "Q123"
+          name: 'Iwi Moa'
+          colour: "#fea278"
+          size: 2
+        -
+          id: "R123"
+          name: 'Kai Miro'
+          colour: "#ba9eff"
+          size: 1
+        -
+          id: "S123"
+          name: 'Kaka Mere'
+          colour: "#ef291d"
+          size: 1
