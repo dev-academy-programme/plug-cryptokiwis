@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import setuptools
 
-
 version = "0.0.1"
 
 install_requires = (
+
 )
 
 setuptools.setup(
@@ -15,6 +15,7 @@ setuptools.setup(
     url="https://github.com/plug-cryptokiwis",
     packages=["crypto_kiwis"],
     install_requires=install_requires,
+    setup_requires=["pytest-runner"],
 
     extras_require={
         "test": (

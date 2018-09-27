@@ -9,8 +9,10 @@ class Crypto_KiwisPlugin(Plugin):
     @classmethod
     def setup(cls, registry):
         components = [
+            crypto_kiwis.model.KiwiModel,
+            crypto_kiwis.model.KiwiCollectionModel,
+            crypto_kiwis.transform.ClaimKiwi,
             # Include your plugin's models/transforms/errors etc here.
         ]
-
         for component in components:
             registry.register(component)

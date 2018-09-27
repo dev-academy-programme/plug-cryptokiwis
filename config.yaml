@@ -1,0 +1,25 @@
+plug:
+  network_id: crypto.kiwis
+  max_block_size: 1000
+  registry:
+    plugins:
+    - crypto_kiwis.Crypto_KiwisPlugin
+    classes:
+    - crypto_kiwis.model.KiwiModel
+  indexers:
+    cryptokiwi.KiwiModel:
+    - crypto_kiwis.indexer.KiwiIndexer
+  storage:
+    class: plug.storage.sqlite.SqliteStorage
+    path: db.sqlite
+    store_n_states: 10
+  initial_state:
+    cryptokiwi.KiwiCollectionModel:
+      _unclaimed:
+        kiwis:
+        - 
+          id: "A123"
+          name: 'Charmander'
+        - 
+          id: "B234"
+          name: 'Kayla'

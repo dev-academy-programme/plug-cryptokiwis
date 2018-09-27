@@ -1,8 +1,10 @@
 ### plug ###
 tmp*.py
-*.yaml
 *.benchmark
 plug/dashboard/config.json
+Pipfile
+Pipfile.lock
+keys.db
 
 ### Linux ###
 *~
@@ -257,3 +259,5 @@ hooks
 info
 
 nodes/
+
+Pipfile
