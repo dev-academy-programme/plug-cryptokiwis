@@ -27,9 +27,9 @@ def test_kiwi_indexer(
     state[KiwiModel.fqdn].add_indexer(indexer)
 
     #act
-    state[KiwiModel.fqdn]['ABC'] = KiwiModel('ABC', '1', 'OwnerA')
-    state[KiwiModel.fqdn]['DEF'] = KiwiModel('DEF', 'name', 'OwnerB')
-    state[KiwiModel.fqdn]['GHI'] = KiwiModel('GHI', '2', 'OwnerA')
+    state[KiwiModel.fqdn]['ABC'] = KiwiModel('ABC', '1', 'OwnerA', 'black', 1)
+    state[KiwiModel.fqdn]['DEF'] = KiwiModel('DEF', 'name', 'OwnerB', 'white', 2)
+    state[KiwiModel.fqdn]['GHI'] = KiwiModel('GHI', '2', 'OwnerA', 'red', 3)
 
     #assert
     assert len(indexer["_all"]) == 3
@@ -48,10 +48,10 @@ def test_kiwi_indexer_removes_items(
     state[KiwiModel.fqdn].add_indexer(indexer)
 
     #act
-    state[KiwiModel.fqdn]['ABC'] = KiwiModel('ABC', '1', 'OwnerA')
-    state[KiwiModel.fqdn]['DEF'] = KiwiModel('DEF', 'name', 'OwnerB')
-    state[KiwiModel.fqdn]['GHI'] = KiwiModel('GHI', '2', 'OwnerA')
-    
+    state[KiwiModel.fqdn]['ABC'] = KiwiModel('ABC', '1', 'OwnerA', 'black', 1)
+    state[KiwiModel.fqdn]['DEF'] = KiwiModel('DEF', 'name', 'OwnerB', 'white', 2)
+    state[KiwiModel.fqdn]['GHI'] = KiwiModel('GHI', '2', 'OwnerA', 'red', 3)
+
     #assert
     assert len(indexer["_all"]) == 3
     assert len(indexer["OwnerA"]) == 2

@@ -93,7 +93,7 @@ class RespondToBreedingRequest(Transform):
         )
 
     def verify(self, state_slice):
-
+        pass
 
     def apply(self, state_slice):
         breeding_request = state_slice[BreedingRequest.fqdn][request_id]
@@ -132,10 +132,15 @@ class ClaimKiwi(Transform):
     def verify(self, state_slice):
         unclaimed = state_slice[KiwiCollectionModel.fqdn]["_unclaimed"]
 
+        owned_ids = [x for x in state_slice[KiwiModel.fqdn]]
+        if len(owned_ids) > 0:
+            raise crypto_kiwis.error.KiwiAlreadyClaimedError("You have already claimed a kiwi!")
+
         matches = [x for x in unclaimed.kiwis if x['id'] == self.kiwi_id]
 
         if len(matches) == 0:
             raise crypto_kiwis.error.KiwiNotFoundError("Kiwi not found with id: " + self.kiwi_id)
+
 
     def apply(self, state_slice):
         collection = state_slice[KiwiCollectionModel.fqdn]
@@ -150,7 +155,7 @@ class ClaimKiwi(Transform):
             size = kiwiDict['size']
 
             kiwis = [x for x in unclaimed.kiwis if x['id'] != id]
-            
+
             state_slice[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis = kiwis
 
             state_slice[KiwiModel.fqdn][id] = {

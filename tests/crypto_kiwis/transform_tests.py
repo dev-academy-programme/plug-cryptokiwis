@@ -37,6 +37,7 @@ def test_claim_initial_kiwi_success(
 
     #act
     execute_transform(transform, state)
+
     kiwi: KiwiModel = state[KiwiModel.fqdn]["A123"]
 
     remaining_unclaimed = state[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis
@@ -44,7 +45,7 @@ def test_claim_initial_kiwi_success(
     #assert
 
     assert "A123" not in remaining_unclaimed_ids
-    assert kiwi.owner_address == claimer_address
+    assert kiwi['owner_address'] == claimer_address
     assert len(remaining_unclaimed) == before_length_unclaimed - 1
 
 
@@ -95,15 +96,16 @@ def test_kiwi_claim_id_not_found_error(
     unclaimed_kiwis.remove(claim_kiwi)
 
     claimed_kiwis = state[KiwiModel.fqdn]
-    claimed_kiwis["A123"] = KiwiModel(
+    state[KiwiModel.fqdn][claimer_address] = KiwiModel(
         id="A123",
         name=claim_kiwi['name'],
         owner_address=claimer_address,
+        colour="blue",
+        size=1
+
     )
 
     before_length_unclaimed = len(state[KiwiCollectionModel.fqdn]["_unclaimed"].kiwis)
-
-    assert type(claimed_kiwis["A123"]) is KiwiModel
 
     #act
     with pytest.raises(KiwiAlreadyClaimedError):
