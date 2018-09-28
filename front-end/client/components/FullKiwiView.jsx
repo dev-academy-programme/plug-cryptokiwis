@@ -5,12 +5,14 @@ import {connect} from 'react-redux'
 import KiwiImage from './KiwiImage'
 import KiwiStatTable from './KiwiStatTable'
 
-import {Router, Route} from 'react-router-dom'
+import {withRouter, Router, Route} from 'react-router-dom'
 
 import names from '../names'
 import {deselectKiwi} from '../actions/kiwis'
 
-const KiwiPreview = ({kiwi, deselect, myKiwis}) => {
+import {claimKiwi} from '../api/kiwis'
+
+const KiwiPreview = ({history, myKey, kiwi, deselect, myKiwis, unclaimedKiwis, claimThisKiwi}) => {
   const {
     name,
     size,
@@ -30,9 +32,9 @@ const KiwiPreview = ({kiwi, deselect, myKiwis}) => {
         <KiwiStatTable kiwi={kiwi} />
       </div>
     </div>
-    <Route path="/grab" render={(props) => <div className="has-text-centered">
+    <Route path="/unclaimed" render={(props) => <div className="has-text-centered">
       {myKiwis.length == 0
-        ? <button className="button is-large is-fullwidth is-success">Adopt this Kiwi (Limit 1)</button>
+        ? <button onClick={() => claimThisKiwi(myKey, kiwi.id, () => history.push('/mykiwis'))} className="button is-large is-fullwidth is-success">Adopt this Kiwi (Limit 1)</button>
         : <button disabled className="button is-large is-fullwidth is-danger">You already own a Kiwi</button>
       }
     </div>} />
@@ -42,7 +44,8 @@ const KiwiPreview = ({kiwi, deselect, myKiwis}) => {
 const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
-  deselect: kiwi => deselectKiwi(kiwi)
+  deselect: kiwi => dispatch(deselectKiwi(kiwi)),
+  claimThisKiwi: (myKey, kiwi_id, cb) => dispatch(claimKiwi(myKey, kiwi_id, cb))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(KiwiPreview)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(KiwiPreview))
