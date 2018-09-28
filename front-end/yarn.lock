@@ -16,71 +16,71 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@plugjs/account@../../plug1/libs/plugjs/account":
+"@plugjs/account@../../plug-libs/plugjs/account":
   version "0.2.6-beta"
   dependencies:
-    "@plugjs/utils" "link:../../../../.cache/yarn/v1/npm-@plugjs/utils"
+    "@plugjs/utils" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/utils"
 
-"@plugjs/account@link:../../plug1/libs/plugjs/account":
+"@plugjs/account@link:../../plug-libs/plugjs/account":
   version "0.0.0"
   uid ""
 
-"@plugjs/client@../../plug1/libs/plugjs/client":
+"@plugjs/client@../../plug-libs/plugjs/client":
   version "0.2.6-beta"
   dependencies:
-    "@plugjs/account" "link:../../../../.cache/yarn/v1/npm-@plugjs/account"
-    "@plugjs/core" "link:../../../../.cache/yarn/v1/npm-@plugjs/core"
-    "@plugjs/provider-http" "link:../../../../.cache/yarn/v1/npm-@plugjs/provider-http"
-    "@plugjs/provider-ws" "link:../../../../.cache/yarn/v1/npm-@plugjs/provider-ws"
-    "@plugjs/transaction" "link:../../../../.cache/yarn/v1/npm-@plugjs/transaction"
-    "@plugjs/utils" "link:../../../../.cache/yarn/v1/npm-@plugjs/utils"
+    "@plugjs/account" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/account"
+    "@plugjs/core" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/core"
+    "@plugjs/provider-http" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/provider-http"
+    "@plugjs/provider-ws" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/provider-ws"
+    "@plugjs/transaction" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/transaction"
+    "@plugjs/utils" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/utils"
 
-"@plugjs/core@../../plug1/libs/plugjs/core":
+"@plugjs/core@../../plug-libs/plugjs/core":
   version "0.2.6-beta"
   dependencies:
-    "@plugjs/utils" "link:../../../../.cache/yarn/v1/npm-@plugjs/utils"
+    "@plugjs/utils" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/utils"
     base64-js "^1.3.0"
     borc "^2.0.3"
 
-"@plugjs/core@link:../../plug1/libs/plugjs/core":
+"@plugjs/core@link:../../plug-libs/plugjs/core":
   version "0.0.0"
   uid ""
 
-"@plugjs/provider-http@../../plug1/libs/plugjs/provider-http":
+"@plugjs/provider-http@../../plug-libs/plugjs/provider-http":
   version "0.2.6-beta"
   dependencies:
-    "@plugjs/core" "link:../../../../.cache/yarn/v1/npm-@plugjs/core"
+    "@plugjs/core" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/core"
     axios "^0.18.0"
     lodash "^4.17.10"
 
-"@plugjs/provider-http@link:../../plug1/libs/plugjs/provider-http":
+"@plugjs/provider-http@link:../../plug-libs/plugjs/provider-http":
   version "0.0.0"
   uid ""
 
-"@plugjs/provider-ws@../../plug1/libs/plugjs/provider-ws":
+"@plugjs/provider-ws@../../plug-libs/plugjs/provider-ws":
   version "0.2.6-beta"
   dependencies:
-    "@plugjs/core" "link:../../../../.cache/yarn/v1/npm-@plugjs/core"
+    "@plugjs/core" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/core"
     websocket "^1.0.26"
 
-"@plugjs/provider-ws@link:../../plug1/libs/plugjs/provider-ws":
+"@plugjs/provider-ws@link:../../plug-libs/plugjs/provider-ws":
   version "0.0.0"
   uid ""
 
-"@plugjs/transaction@../../plug1/libs/plugjs/transaction":
+"@plugjs/transaction@../../plug-libs/plugjs/transaction":
   version "0.2.6-beta"
   dependencies:
-    "@plugjs/core" "link:../../../../.cache/yarn/v1/npm-@plugjs/core"
-    "@plugjs/utils" "link:../../../../.cache/yarn/v1/npm-@plugjs/utils"
+    "@plugjs/core" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/core"
+    "@plugjs/utils" "link:../../../../../Library/Caches/Yarn/v2/npm-@plugjs/utils"
 
-"@plugjs/transaction@link:../../plug1/libs/plugjs/transaction":
+"@plugjs/transaction@link:../../plug-libs/plugjs/transaction":
   version "0.0.0"
   uid ""
 
-"@plugjs/transform@../../plug1/libs/plugjs/transform":
+"@plugjs/transform@../../plug-libs/plugjs/transform":
   version "0.1.0-beta"
 
-"@plugjs/utils@../../plug1/libs/plugjs/utils":
+"@plugjs/utils@../../plug-libs/plugjs/utils":
   version "0.2.6-beta"
   dependencies:
     bs58 "^4.0.1"
@@ -89,7 +89,7 @@
     sha.js "^2.4.11"
     tweetnacl "^1.0.0"
 
-"@plugjs/utils@link:../../plug1/libs/plugjs/utils":
+"@plugjs/utils@link:../../plug-libs/plugjs/utils":
   version "0.0.0"
   uid ""
 
@@ -5877,6 +5877,13 @@ sha.js@^2.4.0, sha.js@^2.4.11, sha.js@^2.4.8:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+sha@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/sha/-/sha-2.0.1.tgz#6030822fbd2c9823949f8f72ed6411ee5cf25aae"
+  dependencies:
+    graceful-fs "^4.1.2"
+    readable-stream "^2.0.2"
 
 shallow-clone@^1.0.0:
   version "1.0.0"
