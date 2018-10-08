@@ -52,7 +52,6 @@ class InitiateBreedingRequest(Transform):
         if self.owner_one_address is self.owner_two_address:
             raise crypto_kiwis.error.SoloOwnerError("You are not allowed to make your own Kiwis breed for some reason!")
 
-
     def apply(self, state_slice):
         id = ED25519SigningKey.new()
         state_slice[BreedingRequest.fqdn][id] = BreedingRequestModel(id, owner_one_address, owner_two_address, kiwi_one, kiwi_two)
@@ -91,9 +90,6 @@ class RespondToBreedingRequest(Transform):
             owner_one_address=payload["owner_one_address"],
             owner_two_address=payload["owner_two_address"],
         )
-
-    def verify(self, state_slice):
-
 
     def apply(self, state_slice):
         breeding_request = state_slice[BreedingRequest.fqdn][request_id]

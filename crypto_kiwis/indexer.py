@@ -1,7 +1,5 @@
-from plug.abstract import ModelIndexer
-from plug.abstract import RunnerIndexer
 from plug.indexer import PersistToFileMixin
-from plug.abstract import ModelIndexer
+from plug.indexer import ModelIndexer
 
 class KiwiIndexer(PersistToFileMixin, ModelIndexer):
     fqdn = "cryptoKiwi.KiwiIndexer"
