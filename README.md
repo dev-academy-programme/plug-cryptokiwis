@@ -59,7 +59,4 @@ You should see an output like
 
 ```sh
 address: 1CAZVSMP4c3FueFQE8kKrLoXL2ViXMJeVX
-key: 0cd5d6a1c48f46cd2a4417bae9807e1d7573d0d0afae9eacab3999751911199a
-
-Keep it secret, keep it safe
 ```
